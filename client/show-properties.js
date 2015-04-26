@@ -10,7 +10,7 @@ function TodoList() {
     //console.log('todo', todo);
     //this.todos.push(todo);
     Parties.insert({
-      name: 'asdasdas111',
+      name: todo,
       description: 'nothing' // current time
     });
   };
