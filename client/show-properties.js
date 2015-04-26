@@ -31,7 +31,9 @@ TodoList.annotations = [
     template:
     '<ul>' +
     '<li *for="#todo of todos">' +
-    '{{ todo }}' +
+    '{{ todo.name }}' +
+    '<br>' +
+    '{{ todo.description }}' +
     '</li>' +
     '</ul>' +
     '<input #textbox (keyup)="doneTyping($event)">' +
