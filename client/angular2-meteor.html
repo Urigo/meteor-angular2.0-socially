@@ -1,0 +1,21 @@
+<head>
+	<title>Angular 2 Hello World!</title>
+</head>
+
+<body>
+
+<my-app></my-app>
+<script>
+	console.log('ststem', System);
+	// Rewrite the paths to load the files
+	System.paths = {
+		'angular2/*': '/angular2/*.js', // Angular
+		'rx/*': '/rx/*.js',
+		'rtts_assert/*': '/rtts_assert/*.js', // Runtime assertions
+		'app': 'client/app.js' // The my-app component
+	};
+
+	// Kick off the application
+	System.import('app');
+</script>
+</body>

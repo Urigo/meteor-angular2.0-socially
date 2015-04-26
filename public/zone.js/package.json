@@ -1,0 +1,57 @@
+{
+  "name": "zone.js",
+  "version": "0.4.3",
+  "description": "Zones for JavaScript",
+  "main": "zone.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js",
+    "serve": "python -m SimpleHTTPServer 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/angular/zone.js.git"
+  },
+  "author": {
+    "name": "Brian Ford"
+  },
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/angular/zone.js/issues"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-sauce-launcher": "^0.2.10",
+    "nodejs-websocket": "^1.2.0"
+  },
+  "gitHead": "f1cbad9b2810b06ae94f8c3db0d30a583e9f7958",
+  "homepage": "https://github.com/angular/zone.js",
+  "_id": "zone.js@0.4.3",
+  "_shasum": "c358604a3a2826090f2fc02317bdb04ad46e3f29",
+  "_from": "zone.js@^0.4.1",
+  "_npmVersion": "2.7.0",
+  "_nodeVersion": "0.10.35",
+  "_npmUser": {
+    "name": "btford",
+    "email": "briantford@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "btford",
+      "email": "briantford@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "c358604a3a2826090f2fc02317bdb04ad46e3f29",
+    "tarball": "http://registry.npmjs.org/zone.js/-/zone.js-0.4.3.tgz"
+  },
+  "_resolved": "https://registry.npmjs.org/zone.js/-/zone.js-0.4.3.tgz",
+  "readme": "ERROR: No README data found!"
+}

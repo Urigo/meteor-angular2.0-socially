@@ -1,0 +1,8 @@
+{
+  "name": "es6-now",
+  "description": "Let you use ES6 now.",
+  "author": "Jonas Aschenbrenner <jonas.aschenbrenner@gmail.com>",
+  "version": "0.2.0",
+  "git": "https://github.com/Sanjo/meteor-es6.git",
+  "homepage": "https://github.com/Sanjo/meteor-es6"
+}
