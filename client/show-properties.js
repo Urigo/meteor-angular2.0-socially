@@ -1,10 +1,10 @@
 function TodoList() {
 
   var self = this;
-  Tracker.autorun(function () {
+  Tracker.autorun(zone.bind(function () {
     self.todos = Parties.find({}).fetch();
     console.log('todos', self.todos);
-  });
+  }));
 
   this.addTodo = function(todo) {
     //console.log('todo', todo);
