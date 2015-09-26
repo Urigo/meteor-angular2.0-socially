@@ -10,6 +10,8 @@ import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
     directives: [NgFor]
 })
 class Socially {
+    parties: Array<Object>;
+
     constructor () {
         this.parties = [
           {'name': 'Dubstep-Free Zone',
