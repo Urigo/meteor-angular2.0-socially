@@ -2,6 +2,8 @@
 
 import {Component, View, NgFor, bootstrap} from 'angular2/angular2';
 
+import {Parties} from 'collections/parties';
+
 @Component({
     selector: 'app'
 })
