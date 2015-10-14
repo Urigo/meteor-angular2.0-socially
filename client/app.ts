@@ -1,8 +1,10 @@
 /// <reference path="../typings/angular2-meteor.d.ts" />
 
-import {NgZone, Component, View, NgFor, bootstrap} from 'angular2/angular2';
+import {Component, View, NgFor} from 'angular2/angular2';
 
 import {Parties} from 'collections/parties';
+
+import {bootstrap} from 'angular2-meteor';
 
 @Component({
     selector: 'app'
@@ -12,12 +14,10 @@ import {Parties} from 'collections/parties';
     directives: [NgFor]
 })
 class Socially {
-    parties: Array<Object>;
+    parties: Mongo.Cursor<Object>;
 
-    constructor (zone: NgZone) {
-        Tracker.autorun(() => zone.run(() => {
-            this.parties = Parties.find().fetch();
-        }));
+    constructor () {
+        this.parties = Parties.find();
     }
 }
 
