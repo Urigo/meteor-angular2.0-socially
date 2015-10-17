@@ -11,4 +11,15 @@ import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators} from 'angular2/a
     templateUrl: 'client/parties-form/parties-form.html',
     directives: [FORM_DIRECTIVES]
 })
-export class PartiesForm { }
+export class PartiesForm {
+    partiesForm: ControlGroup;
+
+    constructor() {
+        var fb = new FormBuilder();
+        this.partiesForm = fb.group({
+            name: [''],
+            description: [''],
+            location: ['']
+        });
+    }
+}
