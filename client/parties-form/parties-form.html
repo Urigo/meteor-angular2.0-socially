@@ -1,4 +1,4 @@
-<form [ng-form-model]="partiesForm">
+<form [ng-form-model]="partiesForm" #f="form" (submit)="addParty(f.value)">
   <label>Name</label>
   <input type="text" ng-control="name">
   <label>Description</label>
