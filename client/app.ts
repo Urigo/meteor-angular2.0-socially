@@ -6,12 +6,14 @@ import {Parties} from 'collections/parties';
 
 import {bootstrap} from 'angular2-meteor';
 
+import {PartiesForm} from 'client/parties-form/parties-form';
+
 @Component({
     selector: 'app'
 })
 @View({
     templateUrl: 'client/app.html',
-    directives: [NgFor]
+    directives: [NgFor, PartiesForm]
 })
 class Socially {
     parties: Mongo.Cursor<Object>;
