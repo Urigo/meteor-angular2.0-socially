@@ -1,0 +1,11 @@
+<div>
+  <parties-form></parties-form>
+  <ul>
+    <li *ng-for="#party of parties">
+      {{party.name}}
+      <p>{{party.description}}</p>
+      <p>{{party.location}}</p>
+      <button (click)="removeParty(party)">X</button>
+    </li>
+  </ul>
+</div>
