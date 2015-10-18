@@ -6,12 +6,14 @@ import {Parties} from 'collections/parties';
 
 import {PartiesForm} from 'client/parties-form/parties-form';
 
+import {RouterLink} from 'angular2/router';
+
 @Component({
     selector: 'app'
 })
 @View({
     templateUrl: 'client/parties-list/parties-list.html',
-    directives: [NgFor, PartiesForm]
+    directives: [NgFor, PartiesForm, RouterLink]
 })
 export class PartiesList {
     parties: Mongo.Cursor<Object>;
