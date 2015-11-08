@@ -1,6 +1,6 @@
 /// <reference path="../../typings/angular2-meteor.d.ts" />
 
-import {Component, View} from 'angular2/angular2';
+import {FORM_DIRECTIVES, Component, View} from 'angular2/angular2';
 
 import {RouteParams} from 'angular2/router';
 
@@ -13,7 +13,7 @@ import {RouterLink} from 'angular2/router';
 })
 @View({
     templateUrl: '/client/party-details/party-details.html',
-    directives: [RouterLink]
+    directives: [RouterLink, FORM_DIRECTIVES]
 })
 export class PartyDetails {
     party: Object;
