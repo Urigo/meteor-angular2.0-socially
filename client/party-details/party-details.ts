@@ -22,4 +22,14 @@ export class PartyDetails {
         var partyId = params.get('partyId');
         this.party = Parties.findOne(partyId);
     }
+
+    saveParty(party) {
+      Parties.update(party._id, {
+        $set: {
+          name: party.name,
+          description: party.description,
+          location: party.location
+        }
+      });
+    }
 }
