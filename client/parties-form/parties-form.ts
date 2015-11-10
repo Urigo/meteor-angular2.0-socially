@@ -1,4 +1,5 @@
 /// <reference path="../../typings/angular2-meteor.d.ts" />
+/// <reference path="../../typings/meteor-accounts-ui.d.ts" />
 
 import {Component, View} from 'angular2/angular2';
 
@@ -6,12 +7,14 @@ import {FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'a
 
 import {Parties} from 'collections/parties';
 
+import {AccountsUI} from 'meteor-accounts-ui';
+
 @Component({
     selector: 'parties-form'
 })
 @View({
     templateUrl: 'client/parties-form/parties-form.html',
-    directives: [FORM_DIRECTIVES]
+    directives: [FORM_DIRECTIVES, AccountsUI]
 })
 export class PartiesForm {
     partiesForm: ControlGroup;
