@@ -1,4 +1,5 @@
 /// <reference path="../../typings/angular2-meteor.d.ts" />
+/// <reference path="../../typings/meteor-accounts.d.ts" />
 
 import {FORM_DIRECTIVES, Component, View} from 'angular2/angular2';
 
@@ -8,6 +9,8 @@ import {Parties} from 'collections/parties';
 
 import {RouterLink} from 'angular2/router';
 
+import {RequireUser} from 'meteor-accounts';
+
 @Component({
     selector: 'party-details'
 })
@@ -15,6 +18,7 @@ import {RouterLink} from 'angular2/router';
     templateUrl: '/client/party-details/party-details.html',
     directives: [RouterLink, FORM_DIRECTIVES]
 })
+@RequireUser()
 export class PartyDetails {
     party: Party;
 
