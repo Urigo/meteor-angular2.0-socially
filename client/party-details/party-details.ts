@@ -1,7 +1,7 @@
 /// <reference path="../../typings/angular2-meteor.d.ts" />
 /// <reference path="../../typings/meteor-accounts.d.ts" />
 
-import {FORM_DIRECTIVES, Component, View} from 'angular2/angular2';
+import {FORM_DIRECTIVES, Component, View, NgIf} from 'angular2/angular2';
 
 import {RouteParams} from 'angular2/router';
 
@@ -18,7 +18,7 @@ import {MeteorComponent} from 'angular2-meteor';
 })
 @View({
     templateUrl: '/client/party-details/party-details.html',
-    directives: [RouterLink, FORM_DIRECTIVES]
+    directives: [RouterLink, FORM_DIRECTIVES, NgIf]
 })
 @RequireUser()
 export class PartyDetails extends MeteorComponent {
