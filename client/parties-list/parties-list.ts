@@ -30,4 +30,12 @@ export class PartiesList extends MeteorComponent {
     removeParty(party) {
         Parties.remove(party._id);
     }
+
+    search(value) {
+        if (value) {
+            this.parties = Parties.find({ location: value });
+        } else {
+            this.parties = Parties.find();
+        }
+    }
 }
