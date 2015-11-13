@@ -1,5 +1,7 @@
 <div>
-  <parties-form></parties-form>
+  <parties-form style="display: inline-block"></parties-form>
+  <input type="text" #searchtext placeholder="Search by Location">
+  <button type="button" (click)="search(searchtext.value)">Search</button>
   <ul>
     <li *ng-for="#party of parties">
       <a [router-link]="['/PartyDetails', {partyId: party._id}]">{{party.name}}</a>
