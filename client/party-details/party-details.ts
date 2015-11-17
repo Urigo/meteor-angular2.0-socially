@@ -16,7 +16,7 @@ import {RouterLink} from 'angular2/router';
     directives: [RouterLink, FORM_DIRECTIVES]
 })
 export class PartyDetails {
-    party: Object;
+    party: Party;
 
     constructor(params: RouteParams) {
         var partyId = params.get('partyId');
