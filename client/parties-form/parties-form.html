@@ -1,12 +1,12 @@
-<form [ng-form-model]="partiesForm" #f="form" (submit)="addParty(f.value)">
+<form [ngFormModel]="partiesForm" #f="ngForm" (ngSubmit)="addParty(f.value)">
   <label>Name</label>
-  <input type="text" ng-control="name">
+  <input type="text" ngControl="name">
   <label>Description</label>
-  <input type="text" ng-control="description">
+  <input type="text" ngControl="description">
   <label>Location</label>
-  <input type="text" ng-control="location">
+  <input type="text" ngControl="location">
   <label>Public</label>
-  <input type="checkbox" ng-control="public">
+  <input type="checkbox" ngControl="public">
   <button>Add</button>
   <accounts-ui></accounts-ui>
 </form>

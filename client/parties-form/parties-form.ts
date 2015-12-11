@@ -1,9 +1,9 @@
 /// <reference path="../../typings/angular2-meteor.d.ts" />
 /// <reference path="../../typings/meteor-accounts-ui.d.ts" />
 
-import {Component, View} from 'angular2/angular2';
+import {Component, View} from 'angular2/core';
 
-import {FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'angular2/angular2';
+import {FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 
 import {Parties} from 'collections/parties';
 
@@ -30,6 +30,7 @@ export class PartiesForm {
     }
 
     addParty(party) {
+      console.log(party);
         if (this.partiesForm.valid) {
             if (Meteor.userId()) {
                 Parties.insert({

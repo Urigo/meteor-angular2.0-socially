@@ -3,8 +3,8 @@
   <input type="text" #searchtext placeholder="Search by Location">
   <button type="button" (click)="search(searchtext.value)">Search</button>
   <ul>
-    <li *ng-for="#party of parties">
-      <a [router-link]="['/PartyDetails', {partyId: party._id}]">{{party.name}}</a>
+    <li *ngFor="#party of parties">
+      <a [routerLink]="['/PartyDetails', {partyId: party._id}]">{{party.name}}</a>
       <p>{{party.description}}</p>
       <p>{{party.location}}</p>
       <button (click)="removeParty(party)">X</button>
