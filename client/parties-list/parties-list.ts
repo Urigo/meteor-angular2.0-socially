@@ -1,6 +1,7 @@
 /// <reference path="../../typings/angular2-meteor.d.ts" />
 
-import {Component, View, NgFor} from 'angular2/angular2';
+import {Component, View} from 'angular2/core';
+import {NgFor} from 'angular2/common';
 
 import {Parties} from 'collections/parties';
 

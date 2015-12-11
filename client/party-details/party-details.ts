@@ -1,7 +1,8 @@
 /// <reference path="../../typings/angular2-meteor.d.ts" />
 /// <reference path="../../typings/meteor-accounts.d.ts" />
 
-import {FORM_DIRECTIVES, Component, View, NgIf} from 'angular2/angular2';
+import {Component, View} from 'angular2/core';
+import {FORM_DIRECTIVES, NgIf} from 'angular2/common';
 
 import {RouteParams} from 'angular2/router';
 
