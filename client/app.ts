@@ -8,6 +8,8 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
   templateUrl: 'client/app.html'
 })
 class Socially {
+  parties: Array<Object>;
+
   constructor() {
     this.parties = [
       {'name': 'Dubstep-Free Zone',
