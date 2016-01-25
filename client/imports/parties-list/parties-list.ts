@@ -11,7 +11,7 @@ import { RouterLink }  from '@angular/router-deprecated';
   directives: [PartiesForm, RouterLink]
 })
 export class PartiesList {
-  parties: Mongo.Cursor;
+  parties: Mongo.Cursor<Party>;
 
   constructor() {
     this.parties = Parties.find();
