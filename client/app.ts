@@ -9,6 +9,8 @@ import template from './app.html';
   template
 })
 class Socially {
+  parties: Array<Object>;
+
   constructor() {
     this.parties = [
       {'name': 'Dubstep-Free Zone',
