@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { Component } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
+import { Parties }   from '../collections/parties';
 
 import template from './app.html';
 
