@@ -27,4 +27,14 @@ export class PartyDetails {
       });
     });
   }
+
+  saveParty(party) {
+    Parties.update(party._id, {
+      $set: {
+        name: party.name,
+        description: party.description,
+        location: party.location
+      }
+    });
+  }
 }
