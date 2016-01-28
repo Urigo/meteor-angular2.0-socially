@@ -27,7 +27,7 @@ export class PartiesList extends MeteorComponent{
     };
 
     this.subscribe('parties', options, () => {
-      this.parties = Parties.find();
+      this.parties = Parties.find({}, {sort: { name: this.nameOrder }});
     }, true);
   }
 
