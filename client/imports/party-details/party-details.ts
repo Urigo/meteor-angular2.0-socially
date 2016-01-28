@@ -1,9 +1,9 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
-import { Tracker } from 'meteor/tracker';
 import {Parties} from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
 import { RequireUser } from 'angular2-meteor-accounts-ui';
+import { MeteorComponent } from 'angular2-meteor';
 
 import template from './party-details.html';
 
@@ -13,21 +13,21 @@ import template from './party-details.html';
   directives: [ROUTER_DIRECTIVES]
 })
 @RequireUser()
-export class PartyDetails {
+export class PartyDetails extends MeteorComponent {
   partyId: string;
   party: Party;
 
-  constructor(private route: ActivatedRoute, private ngZone: NgZone) {}
+  constructor(private route: ActivatedRoute) {
+    super();
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.partyId = params['partyId'];
 
-      Tracker.autorun(() => {
-        this.ngZone.run(() => {
-          this.party = Parties.findOne(this.partyId);
-        });
-      });
+      this.subscribe('party', this.partyId, () => {
+        this.party = Parties.findOne(this.partyId);
+      }, true);
     });
   }
 
