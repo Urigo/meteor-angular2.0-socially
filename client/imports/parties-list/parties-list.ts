@@ -6,13 +6,16 @@ import { ROUTER_DIRECTIVES }  from '@angular/router';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
 
 import template from './parties-list.html';
 
 @Component({
   selector: 'parties-list',
+  viewProviders: [PaginationService],
   template,
-  directives: [PartiesForm, ROUTER_DIRECTIVES, LoginButtons]
+  directives: [PartiesForm, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp],
+  pipes: [PaginatePipe]
 })
 export class PartiesList extends MeteorComponent{
   parties: Mongo.Cursor<Party>;
