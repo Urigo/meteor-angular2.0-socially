@@ -21,8 +21,8 @@ function buildQuery(partyId?: string): Object {
   return isAvailable;
 }
 
-Meteor.publish('parties', function() {
-  return Parties.find(buildQuery.call(this));
+Meteor.publish('parties', function(options: Object) {
+  return Parties.find(buildQuery.call(this), options);
 });
 
 Meteor.publish('party', function(partyId: string) {
