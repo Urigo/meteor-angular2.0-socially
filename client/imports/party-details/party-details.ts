@@ -3,6 +3,7 @@ import { RouteParams, RouterLink } from '@angular/router-deprecated';
 import {Parties} from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
 import { RequireUser } from 'angular2-meteor-accounts-ui';
+import { MeteorComponent } from 'angular2-meteor';
 
 @Component({
   selector: 'party-details',
@@ -10,12 +11,16 @@ import { RequireUser } from 'angular2-meteor-accounts-ui';
   directives: [RouterLink]
 })
 @RequireUser()
-export class PartyDetails {
+export class PartyDetails extends MeteorComponent {
   party: Party;
 
   constructor(params: RouteParams) {
+    super();
     var partyId = params.get('partyId');
-    this.party = Parties.findOne(partyId);
+
+    this.subscribe('party', partyId, () => {
+      this.party = Parties.findOne(partyId);
+    }, true);
   }
 
   saveParty(party) {
