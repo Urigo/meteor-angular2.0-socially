@@ -6,11 +6,14 @@ import { RouterLink }  from '@angular/router-deprecated';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
 
 @Component({
   selector: 'parties-list',
+  viewProviders: [PaginationService],
   templateUrl: '/client/imports/parties-list/parties-list.html',
-  directives: [PartiesForm, RouterLink, LoginButtons]
+  directives: [PartiesForm, RouterLink, LoginButtons, PaginationControlsCmp],
+  pipes: [PaginatePipe]
 })
 export class PartiesList extends MeteorComponent{
   parties: Mongo.Cursor<Party>;
