@@ -5,6 +5,7 @@ import { Mongo }       from 'meteor/mongo';
 import { RouterLink }  from '@angular/router-deprecated';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 @Component({
   selector: 'parties-list',
