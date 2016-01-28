@@ -13,10 +13,20 @@ import { MeteorComponent } from 'angular2-meteor';
 })
 export class PartiesList extends MeteorComponent{
   parties: Mongo.Cursor<Party>;
+  pageSize: number = 10;
+  curPage: number = 1;
+  nameOrder: number = 1;
 
   constructor() {
     super();
-    this.subscribe('parties', () => {
+
+    let options = {
+      limit: this.pageSize,
+      skip: (this.curPage - 1) * this.pageSize,
+      sort: { name: this.nameOrder }
+    };
+
+    this.subscribe('parties', options, () => {
       this.parties = Parties.find();
     }, true);
   }
