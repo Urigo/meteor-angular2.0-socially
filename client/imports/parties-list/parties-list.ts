@@ -5,6 +5,7 @@ import { Mongo }       from 'meteor/mongo';
 import { ROUTER_DIRECTIVES }  from '@angular/router';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import template from './parties-list.html';
 
