@@ -22,7 +22,7 @@ export class PartiesList extends MeteorComponent{
   parties: Mongo.Cursor<Party>;
   pageSize: number = 10;
   curPage: ReactiveVar<number> = new ReactiveVar<number>(1);
-  nameOrder: number = 1;
+  nameOrder: ReactiveVar<number> = new ReactiveVar<number>(1);
   partiesSize: number = 0;
 
   constructor() {
@@ -32,11 +32,11 @@ export class PartiesList extends MeteorComponent{
       let options = {
         limit: this.pageSize,
         skip: (this.curPage.get() - 1) * this.pageSize,
-        sort: { name: this.nameOrder }
+        sort: { name: this.nameOrder.get() }
       };
 
       this.subscribe('parties', options, () => {
-        this.parties = Parties.find({}, { sort: { name: this.nameOrder } });
+        this.parties = Parties.find({}, { sort: { name: this.nameOrder.get() } });
       }, true);
     });
 
@@ -55,6 +55,10 @@ export class PartiesList extends MeteorComponent{
     } else {
       this.parties = Parties.find();
     }
+  }
+
+  changeSortOrder(nameOrder: string) {
+    this.nameOrder.set(parseInt(nameOrder));
   }
 
   onPageChanged(page: number) {
