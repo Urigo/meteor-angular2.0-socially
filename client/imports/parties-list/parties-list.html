@@ -3,6 +3,13 @@
   <input type="text" #searchtext placeholder="Search by Location">
   <button type="button" (click)="search(searchtext.value)">Search</button>
   <login-buttons></login-buttons>
+  <h1>Parties:</h1>
+  <div>
+    <select #sort (change)="changeSortOrder(sort.value)">
+      <option value="1" selected>Ascending</option>
+      <option value="-1">Descending</option>
+    </select>
+  </div>
   <ul>
     <li *ngFor="let party of parties | paginate:{currentPage: 1, itemsPerPage: pageSize, totalItems: partiesSize}">
       <a [routerLink]="['/party', party._id]">{{party.name}}</a>
