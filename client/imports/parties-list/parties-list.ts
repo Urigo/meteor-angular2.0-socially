@@ -6,6 +6,7 @@ import { ROUTER_DIRECTIVES }  from '@angular/router';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
 
 import template from './parties-list.html';
@@ -22,6 +23,7 @@ export class PartiesList extends MeteorComponent{
   pageSize: number = 10;
   curPage: ReactiveVar<number> = new ReactiveVar<number>(1);
   nameOrder: number = 1;
+  partiesSize: number = 0;
 
   constructor() {
     super();
@@ -37,6 +39,10 @@ export class PartiesList extends MeteorComponent{
         this.parties = Parties.find({}, { sort: { name: this.nameOrder } });
       }, true);
     });
+
+    this.autorun(() => {
+      this.partiesSize = Counts.get('numberOfParties');
+    }, true);
   }
 
   removeParty(party) {
