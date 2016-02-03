@@ -4,12 +4,14 @@ import {Parties} from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
 import { RequireUser } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
+import { DisplayName } from '../pipes/pipes.ts';
 import { Mongo } from 'meteor/mongo';
 
 @Component({
   selector: 'party-details',
   templateUrl: '/client/imports/party-details/party-details.html',
-  directives: [RouterLink]
+  directives: [RouterLink],
+  pipes: [DisplayName]
 })
 @RequireUser()
 export class PartyDetails extends MeteorComponent {
