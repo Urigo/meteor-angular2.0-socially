@@ -32,13 +32,25 @@ export class PartyDetails extends MeteorComponent {
       this.subscribe('party', this.partyId, () => {
         this.autorun(() => {
           this.party = Parties.findOne(this.partyId);
+          this.getUsers(this.party);
         }, true);
       });
 
       this.subscribe('uninvited', this.partyId, () => {
-        this.users = Meteor.users.find({_id: {$ne: Meteor.userId()}});
+        this.getUsers(this.party);
       }, true);
     });
+  }
+
+  getUsers(party: Party) {
+    if (party) {
+      this.users = Meteor.users.find({
+        _id: {
+          $nin: party.invited || [],
+          $ne: Meteor.userId()
+        }
+      });
+    }
   }
 
   saveParty(party) {
