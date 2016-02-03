@@ -6,4 +6,10 @@ interface Party {
   owner?: string;
   public: boolean;
   invited?: Array<string>;
+  rsvps?: Array<RSVP>;
+}
+
+interface RSVP {
+  userId: string;
+  response: string;
 }
