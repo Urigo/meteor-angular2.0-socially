@@ -8,6 +8,7 @@ import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
+import { RsvpPipe } from '../pipes/pipes.ts';
 
 import template from './parties-list.html';
 
@@ -16,7 +17,7 @@ import template from './parties-list.html';
   viewProviders: [PaginationService],
   template,
   directives: [PartiesForm, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp],
-  pipes: [PaginatePipe]
+  pipes: [PaginatePipe, RsvpPipe]
 })
 export class PartiesList extends MeteorComponent{
   parties: Mongo.Cursor<Party>;
