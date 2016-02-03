@@ -3,12 +3,14 @@ import { RouteParams, RouterLink } from '@angular/router-deprecated';
 import { Tracker } from 'meteor/tracker';
 import {Parties} from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
+import { RequireUser } from 'angular2-meteor-accounts-ui';
 
 @Component({
   selector: 'party-details',
   templateUrl: '/client/imports/party-details/party-details.html',
   directives: [RouterLink]
 })
+@RequireUser()
 export class PartyDetails {
   party: Party;
 
