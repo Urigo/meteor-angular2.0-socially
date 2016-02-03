@@ -16,5 +16,6 @@
   Users to invite:
   <li *ngFor="let user of users">
     <div>{{ user | displayName }}</div>
+    <button (click)="invite(user)">Invite</button>
   </li>
 </ul>
