@@ -11,5 +11,5 @@
       <button (click)="removeParty(party)">X</button>
     </li>
   </ul>
-  <pagination-controls></pagination-controls>
+  <pagination-controls (change)="onPageChanged($event.page)"></pagination-controls>
 </div>
