@@ -3,6 +3,7 @@ import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { Tracker } from 'meteor/tracker';
 import {Parties} from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
+import { RequireUser } from 'angular2-meteor-accounts-ui';
 
 import template from './party-details.html';
 
@@ -11,6 +12,7 @@ import template from './party-details.html';
   template,
   directives: [ROUTER_DIRECTIVES]
 })
+@RequireUser()
 export class PartyDetails {
   partyId: string;
   party: Party;
