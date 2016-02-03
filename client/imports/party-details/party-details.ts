@@ -52,4 +52,15 @@ export class PartyDetails extends MeteorComponent {
       alert('Please log in to change this party');
     }
   }
+
+  invite(user: Meteor.User) {
+    this.call('invite', this.party._id, user._id, (error) => {
+      if (error) {
+        alert(`Failed to invite due to ${error}`);
+        return;
+      }
+
+      alert('User successfully invited.');
+    });
+  }
 }
