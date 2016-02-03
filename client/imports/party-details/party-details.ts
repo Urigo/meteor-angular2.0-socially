@@ -69,4 +69,15 @@ export class PartyDetails extends MeteorComponent {
       alert('User successfully invited.');
     });
   }
+
+  reply(rsvp: string) {
+    this.call('reply', this.party._id, rsvp, (error) => {
+      if (error) {
+        alert(`Failed to reply due to ${error}`);
+      }
+      else {
+        alert('You successfully replied.');
+      }
+    });
+  }
 }
