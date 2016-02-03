@@ -4,7 +4,7 @@
   <button type="button" (click)="search(searchtext.value)">Search</button>
   <login-buttons></login-buttons>
   <ul>
-    <li *ngFor="let party of parties | paginate:{currentPage: 1, itemsPerPage: pageSize, totalItems: 30}">
+    <li *ngFor="let party of parties | paginate:{currentPage: 1, itemsPerPage: pageSize, totalItems: partiesSize}">
       <a [routerLink]="['/party', party._id]">{{party.name}}</a>
       <p>{{party.description}}</p>
       <p>{{party.location}}</p>
