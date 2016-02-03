@@ -6,6 +6,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { PartiesList } from './imports/parties-list/parties-list.ts';
 import { PartyDetails } from './imports/party-details/party-details.ts';
 import '../collections/methods.ts';
+import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
 
 import template from './app.html';
 
@@ -25,4 +26,4 @@ const APP_ROUTER_PROVIDERS = [
   provideRouter(routes)
 ];
 
-bootstrap(Socially, [APP_ROUTER_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+bootstrap(Socially, [APP_ROUTER_PROVIDERS, GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
