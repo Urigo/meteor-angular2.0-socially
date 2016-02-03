@@ -4,6 +4,7 @@ import {Parties} from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
 import { RequireUser } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
+import { Mongo } from 'meteor/mongo';
 
 @Component({
   selector: 'party-details',
@@ -13,6 +14,7 @@ import { MeteorComponent } from 'angular2-meteor';
 @RequireUser()
 export class PartyDetails extends MeteorComponent {
   party: Party;
+  users: Mongo.Cursor<Object>;
 
   constructor(params: RouteParams) {
     super();
@@ -20,6 +22,10 @@ export class PartyDetails extends MeteorComponent {
 
     this.subscribe('party', partyId, () => {
       this.party = Parties.findOne(partyId);
+    }, true);
+
+    this.subscribe('uninvited', partyId, () => {
+      this.users = Meteor.users.find({_id: {$ne: Meteor.userId()}});
     }, true);
   }
 
