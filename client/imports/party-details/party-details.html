@@ -11,3 +11,10 @@
   <button type="submit">Save</button>
   <button [routerLink]="['/PartiesList']">Cancel</button>
 </form>
+
+<ul>
+  Users to invite:
+  <li *ngFor="let user of users">
+    <div>{{ user.emails[0].address }}</div>
+  </li>
+</ul>
