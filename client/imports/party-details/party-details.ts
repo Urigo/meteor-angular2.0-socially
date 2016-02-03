@@ -98,4 +98,21 @@ export class PartyDetails extends MeteorComponent {
 
     return false;
   }
+
+  get isPublic(): boolean {
+    if (this.party) {
+      return this.party.public;
+    }
+
+    return false;
+  }
+
+  get isInvited(): boolean {
+    if (this.party && this.user) {
+      let invited = this.party.invited || [];
+      return invited.indexOf(this.user._id) !== -1;
+    }
+
+    return false;
+  }
 }
