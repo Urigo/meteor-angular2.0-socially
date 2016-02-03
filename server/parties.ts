@@ -5,11 +5,17 @@ import {Counts} from 'meteor/tmeasday:publish-counts';
 function buildQuery(partyId: string, location: string): Object {
   var isAvailable = {
     $or: [
-      { public: true },
+      { 'public': true },
       {
         $and: [
           { owner: this.userId },
           { owner: { $exists: true } }
+        ],
+      },
+      {
+        $and: [
+          { invited: this.userId },
+          { invited: { $exists: true } }
         ]
       }
     ]
