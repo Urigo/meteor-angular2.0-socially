@@ -3,7 +3,7 @@ import { Parties }     from '../../../collections/parties';
 import { PartiesForm } from '../parties-form/parties-form';
 import { Mongo }       from 'meteor/mongo';
 import { ROUTER_DIRECTIVES }  from '@angular/router';
-import { LoginButtons, InjectUser } from 'angular2-meteor-accounts-ui';
+import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Counts } from 'meteor/tmeasday:publish-counts';
@@ -18,7 +18,7 @@ import template from './parties-list.html';
   selector: 'parties-list',
   viewProviders: [PaginationService],
   template,
-  directives: [GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp],
+  directives: [GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, PaginationControlsCmp],
   pipes: [PaginatePipe, RsvpPipe]
 })
 @InjectUser()
