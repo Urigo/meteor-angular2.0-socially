@@ -10,6 +10,7 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
 import { RsvpPipe } from '../pipes/pipes.ts';
 import { Meteor } from 'meteor/meteor';
+import {GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
 
 import template from './parties-list.html';
 
@@ -17,7 +18,7 @@ import template from './parties-list.html';
   selector: 'parties-list',
   viewProviders: [PaginationService],
   template,
-  directives: [PartiesForm, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp],
+  directives: [GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp],
   pipes: [PaginatePipe, RsvpPipe]
 })
 @InjectUser()
