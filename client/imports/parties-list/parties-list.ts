@@ -3,7 +3,7 @@ import { Parties }     from '../../../collections/parties';
 import { PartiesForm } from '../parties-form/parties-form';
 import { Mongo }       from 'meteor/mongo';
 import { RouterLink }  from '@angular/router-deprecated';
-import { LoginButtons, InjectUser } from 'angular2-meteor-accounts-ui';
+import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Counts } from 'meteor/tmeasday:publish-counts';
@@ -16,7 +16,7 @@ import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
   selector: 'parties-list',
   viewProviders: [PaginationService],
   templateUrl: '/client/imports/parties-list/parties-list.html',
-  directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES, PartiesForm, RouterLink, LoginButtons, PaginationControlsCmp],
+  directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES, PartiesForm, RouterLink, PaginationControlsCmp],
   pipes: [PaginatePipe, RsvpPipe]
 })
 @InjectUser()
