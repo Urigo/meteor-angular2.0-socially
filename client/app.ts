@@ -7,11 +7,12 @@ import { PartiesList } from './imports/parties-list/parties-list.ts';
 import { PartyDetails } from './imports/party-details/party-details.ts';
 import '../collections/methods.ts';
 import {ANGULAR2_GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
+import {LoginButtons} from 'angular2-meteor-accounts-ui';
 
 @Component({
   selector: 'app',
   templateUrl: '/client/app.html',
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, LoginButtons]
 })
 @RouteConfig([
   { path: '/', as: 'PartiesList', component: PartiesList },
