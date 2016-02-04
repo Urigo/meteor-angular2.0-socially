@@ -1,2 +1,7 @@
 @import "{}/node_modules/angular2-meteor-accounts-ui/build/login-buttons.scss";
 @import "{}/node_modules/angular2-pagination/build/pagination-controls-cmp.scss";
+
+.sebm-google-map-container {
+  width: 400px;
+  height: 400px;
+}
