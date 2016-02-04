@@ -7,13 +7,14 @@ import { PartiesList } from './imports/parties-list/parties-list.ts';
 import { PartyDetails } from './imports/party-details/party-details.ts';
 import '../collections/methods.ts';
 import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
+import {LoginButtons} from 'angular2-meteor-accounts-ui';
 
 import template from './app.html';
 
 @Component({
   selector: 'app',
   template,
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, LoginButtons]
 })
 class Socially {}
 
