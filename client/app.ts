@@ -1,5 +1,7 @@
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
+import {MATERIAL_PROVIDERS, MATERIAL_DIRECTIVES} from 'ng2-material';
+
 import { Component, provide } from '@angular/core';
 import { bootstrap } from 'angular2-meteor-auto-bootstrap';
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig } from '@angular/router-deprecated';
@@ -13,7 +15,7 @@ import {LoginButtons} from 'angular2-meteor-accounts-ui';
 @Component({
   selector: 'app',
   templateUrl: 'client/app.html',
-  directives: [ROUTER_DIRECTIVES, LoginButtons]
+  directives: [ROUTER_DIRECTIVES, LoginButtons, MATERIAL_DIRECTIVES]
 })
 @RouteConfig([
   { path: '/', as: 'PartiesList', component: PartiesList },
@@ -21,4 +23,4 @@ import {LoginButtons} from 'angular2-meteor-accounts-ui';
 ])
 class Socially {}
 
-bootstrap(Socially, [ROUTER_PROVIDERS, ANGULAR2_GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+bootstrap(Socially, [MATERIAL_PROVIDERS, ROUTER_PROVIDERS, ANGULAR2_GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
