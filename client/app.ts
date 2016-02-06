@@ -35,6 +35,12 @@ class Socially extends MeteorComponent {
   constructor() {
     super();
   }
+
+  logout() {
+    this.autorun(() => {
+      Meteor.logout();
+    });
+  }
 }
 
 const routes: RouterConfig = [
