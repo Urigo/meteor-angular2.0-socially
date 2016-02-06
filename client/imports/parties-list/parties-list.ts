@@ -11,6 +11,7 @@ import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2
 import { RsvpPipe } from '../pipes/pipes.ts';
 import { Meteor } from 'meteor/meteor';
 import {GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
+import {MATERIAL_DIRECTIVES} from 'ng2-material';
 
 import template from './parties-list.html';
 
@@ -18,7 +19,7 @@ import template from './parties-list.html';
   selector: 'parties-list',
   viewProviders: [PaginationService],
   template,
-  directives: [GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, PaginationControlsCmp],
+  directives: [MATERIAL_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, PaginationControlsCmp],
   pipes: [PaginatePipe, RsvpPipe]
 })
 @InjectUser()
