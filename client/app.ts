@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import {MATERIAL_PROVIDERS, MATERIAL_DIRECTIVES} from 'ng2-material';
+
 import { Component, provide } from '@angular/core';
 import { bootstrap } from 'angular2-meteor-auto-bootstrap';
 import { provideRouter, RouterConfig, ROUTER_DIRECTIVES } from '@angular/router';
@@ -14,7 +16,7 @@ import template from './app.html';
 @Component({
   selector: 'app',
   template,
-  directives: [ROUTER_DIRECTIVES, LoginButtons]
+  directives: [ROUTER_DIRECTIVES, LoginButtons, MATERIAL_DIRECTIVES]
 })
 class Socially {}
 
@@ -27,4 +29,4 @@ const APP_ROUTER_PROVIDERS = [
   provideRouter(routes)
 ];
 
-bootstrap(Socially, [APP_ROUTER_PROVIDERS, GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+bootstrap(Socially, [MATERIAL_PROVIDERS, APP_ROUTER_PROVIDERS, GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
