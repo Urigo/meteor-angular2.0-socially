@@ -11,12 +11,13 @@ import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2
 import { RsvpPipe } from '../pipes/pipes.ts';
 import { Meteor } from 'meteor/meteor';
 import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
+import {MATERIAL_DIRECTIVES} from 'ng2-material';
 
 @Component({
   selector: 'parties-list',
   viewProviders: [PaginationService],
   templateUrl: '/client/imports/parties-list/parties-list.html',
-  directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES, PartiesForm, RouterLink, PaginationControlsCmp],
+  directives: [MATERIAL_DIRECTIVES, ANGULAR2_GOOGLE_MAPS_DIRECTIVES, PartiesForm, RouterLink, PaginationControlsCmp],
   pipes: [PaginatePipe, RsvpPipe]
 })
 @InjectUser()
