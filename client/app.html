@@ -1,7 +1,10 @@
-<nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Socially</a>
-  <login-buttons class="pull-right"></login-buttons>
-</nav>
-<div class="container-fluid">
-  <router-outlet></router-outlet>
-</div>
+<md-toolbar>
+  <h2>
+    <a ui-sref="parties"><span class="md-title">Socially</span></a>
+  </h2>
+  <span flex></span>
+  <div class="navbar-right navbar-text">
+    <login-buttons></login-buttons>
+  </div>
+</md-toolbar>
+<router-outlet flex-gt-sm layout-gt-sm="row"></router-outlet>
