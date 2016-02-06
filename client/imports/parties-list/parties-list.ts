@@ -12,6 +12,7 @@ import { RsvpPipe } from '../pipes/pipes.ts';
 import { Meteor } from 'meteor/meteor';
 import {GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
 import {MATERIAL_DIRECTIVES} from 'ng2-material';
+import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 
 import template from './parties-list.html';
 
@@ -19,7 +20,7 @@ import template from './parties-list.html';
   selector: 'parties-list',
   viewProviders: [PaginationService],
   template,
-  directives: [MATERIAL_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, PaginationControlsCmp],
+  directives: [MATERIAL_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, PaginationControlsCmp, MD_INPUT_DIRECTIVES],
   pipes: [PaginatePipe, RsvpPipe]
 })
 @InjectUser()
