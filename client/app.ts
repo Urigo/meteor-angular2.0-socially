@@ -43,6 +43,12 @@ class Socially extends MeteorComponent {
   constructor() {
     super();
   }
+
+  logout() {
+    this.autorun(() => {
+      Meteor.logout();
+    });
+  }
 }
 
 bootstrap(Socially, [MATERIAL_PROVIDERS, ROUTER_PROVIDERS, ANGULAR2_GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
