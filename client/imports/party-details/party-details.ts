@@ -7,11 +7,15 @@ import { MeteorComponent } from 'angular2-meteor';
 import { DisplayName } from '../pipes/pipes.ts';
 import { Mongo } from 'meteor/mongo';
 import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MouseEvent} from 'angular2-google-maps/core';
+import {MATERIAL_DIRECTIVES} from 'ng2-material';
+import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
+import {MdCheckbox} from '@angular2-material/checkbox';
+
 
 @Component({
   selector: 'party-details',
   templateUrl: '/client/imports/party-details/party-details.html',
-  directives: [RouterLink, ANGULAR2_GOOGLE_MAPS_DIRECTIVES],
+  directives: [RouterLink, ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MATERIAL_DIRECTIVES, MD_INPUT_DIRECTIVES, MdCheckbox],
   pipes: [DisplayName]
 })
 @RequireUser()
