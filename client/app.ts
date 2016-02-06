@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import {MATERIAL_PROVIDERS, MATERIAL_DIRECTIVES} from 'ng2-material';
+import {MdToolbar} from '@angular2-material/toolbar';
 
 import { Component, provide } from '@angular/core';
 import { bootstrap } from 'angular2-meteor-auto-bootstrap';
@@ -10,13 +11,14 @@ import { PartyDetails } from './imports/party-details/party-details.ts';
 import '../collections/methods.ts';
 import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
 import {LoginButtons} from 'angular2-meteor-accounts-ui';
+import '../node_modules/@angular2-material/toolbar/toolbar.css'
 
 import template from './app.html';
 
 @Component({
   selector: 'app',
   template,
-  directives: [ROUTER_DIRECTIVES, LoginButtons, MATERIAL_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, LoginButtons, MATERIAL_DIRECTIVES, MdToolbar]
 })
 class Socially {}
 
