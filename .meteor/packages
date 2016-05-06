@@ -19,3 +19,4 @@ angular2-compilers
 barbatus:angular2-runtime
 accounts-password
 reactive-var
+tmeasday:publish-counts
