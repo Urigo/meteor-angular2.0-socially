@@ -12,7 +12,7 @@ import template from './party-details.html';
 })
 export class PartyDetails {
   partyId: string;
-  party: Object;
+  party: Party;
 
   constructor(private route: ActivatedRoute, private ngZone: NgZone) {}
 
