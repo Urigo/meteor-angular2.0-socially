@@ -50,4 +50,8 @@ export class PartiesList extends MeteorComponent{
       this.parties = Parties.find();
     }
   }
+
+  onPageChanged(page: number) {
+    this.curPage.set(page);
+  }
 }
