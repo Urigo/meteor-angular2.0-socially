@@ -2,6 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { RouteParams, RouterLink } from '@angular/router-deprecated';
 import { Tracker } from 'meteor/tracker';
 import {Parties} from '../../../collections/parties.ts';
+import { Meteor } from 'meteor/meteor';
 
 @Component({
   selector: 'party-details',
@@ -22,12 +23,16 @@ export class PartyDetails {
   }
 
   saveParty(party) {
-    Parties.update(party._id, {
-      $set: {
-        name: party.name,
-        description: party.description,
-        location: party.location
-      }
-    });
+    if (Meteor.userId()) {
+      Parties.update(party._id, {
+        $set: {
+          name: party.name,
+          description: party.description,
+          location: party.location
+        }
+      });
+    } else {
+      alert('Please log in to change this party');
+    }
   }
 }
