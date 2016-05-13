@@ -1,0 +1,10 @@
+{
+  "name": "socially",
+  "version": false,
+  "dependencies": {
+    "es6-promise": "registry:npm/es6-promise#3.0.0+20160211003958"
+  },
+  "ambientDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654"
+  }
+}
