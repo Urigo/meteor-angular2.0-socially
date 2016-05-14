@@ -16,6 +16,7 @@
     "angular2-meteor-accounts-ui": "0.4.3",
     "angular2-meteor-auto-bootstrap": "0.5.5",
     "angular2-pagination": "0.2.1",
+    "bootstrap": "4.0.0-alpha.2",
     "es6-shim": "0.35.1",
     "meteor-node-stubs": "^0.2.3",
     "reflect-metadata": "0.1.2",
