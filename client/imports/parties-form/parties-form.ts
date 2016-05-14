@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { Component } from '@angular/core';
+import { FormBuilder, ControlGroup, Validators } from '@angular/common';
 
 import template from './parties-form.html';
 
@@ -7,4 +8,16 @@ import template from './parties-form.html';
   selector: 'parties-form',
   template
 })
-export class PartiesForm { }
+export class PartiesForm {
+  partiesForm: ControlGroup;
+
+  constructor() {
+    let fb = new FormBuilder();
+
+    this.partiesForm = fb.group({
+      name: [''],
+      description: [''],
+      location: ['']
+    });
+  }
+}
