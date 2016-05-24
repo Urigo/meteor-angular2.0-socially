@@ -3,10 +3,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, ControlGroup, Validators, Control } from '@angular/common';
 import { Parties } from '../../../collections/parties.ts';
 import { Meteor } from 'meteor/meteor';
+import {MATERIAL_DIRECTIVES} from 'ng2-material';
+import {MdCheckbox} from '@angular2-material/checkbox';
+import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 
 @Component({
   selector: 'parties-form',
-  templateUrl: '/client/imports/parties-form/parties-form.html'
+  templateUrl: '/client/imports/parties-form/parties-form.html',
+  directives: [MATERIAL_DIRECTIVES, MdCheckbox, MD_INPUT_DIRECTIVES]
 })
 export class PartiesForm {
   partiesForm: ControlGroup;
