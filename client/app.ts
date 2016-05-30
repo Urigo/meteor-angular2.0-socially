@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
+import { Meteor } from 'meteor/meteor';
 import {MATERIAL_PROVIDERS, MATERIAL_DIRECTIVES} from 'ng2-material';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MeteorComponent} from 'angular2-meteor';
@@ -36,7 +37,7 @@ import {Recover} from './imports/auth/recover.ts';
   { path: '/signup', as: 'Signup', component: Signup },
   { path: '/recover', as: 'Recover', component: Recover }
 ])
-@InjectUser()
+@InjectUser("user")
 class Socially extends MeteorComponent {
   user: Meteor.User;
 

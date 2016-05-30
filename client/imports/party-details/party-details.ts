@@ -19,7 +19,7 @@ import {MdCheckbox} from '@angular2-material/checkbox';
   pipes: [DisplayName]
 })
 @RequireUser()
-@InjectUser()
+@InjectUser("user")
 export class PartyDetails extends MeteorComponent {
   party: Party;
   users: Mongo.Cursor<Object>;
