@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Tracker } from 'meteor/tracker';
 import {Parties} from '../../../collections/parties.ts';
 
 import template from './party-details.html';
@@ -18,7 +19,9 @@ export class PartyDetails {
     this.route.params.subscribe((params) => {
       this.partyId = params['partyId'];
 
-      this.party = Parties.findOne(this.partyId);
+      Tracker.autorun(() => {
+        this.party = Parties.findOne(this.partyId);
+      });
     });
   }
 }
