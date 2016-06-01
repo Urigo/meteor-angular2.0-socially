@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
 import { Tracker } from 'meteor/tracker';
 import {Parties} from '../../../collections/parties.ts';
@@ -10,11 +10,13 @@ import {Parties} from '../../../collections/parties.ts';
 export class PartyDetails {
   party: Object;
 
-  constructor(params: RouteParams) {
+  constructor(params: RouteParams, ngZone: NgZone) {
     var partyId = params.get('partyId');
 
     Tracker.autorun(() => {
-      this.party = Parties.findOne(partyId);
+      ngZone.run(() => {
+        this.party = Parties.findOne(partyId);
+      });
     });
   }
 }
