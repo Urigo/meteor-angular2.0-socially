@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
+import { Tracker } from 'meteor/tracker';
 import {Parties} from '../../../collections/parties.ts';
 
 @Component({
@@ -11,6 +12,9 @@ export class PartyDetails {
 
   constructor(params: RouteParams) {
     var partyId = params.get('partyId');
-    this.party = Parties.findOne(partyId);
+
+    Tracker.autorun(() => {
+      this.party = Parties.findOne(partyId);
+    });
   }
 }
