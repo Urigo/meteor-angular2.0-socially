@@ -22,6 +22,7 @@
     "angular2-meteor-polyfills": "^0.1.1",
     "angular2-pagination": "0.2.1",
     "es6-shim": "^0.35.1",
+    "gm": "^1.22.0",
     "meteor-node-stubs": "^0.2.3",
     "ng2-material": "0.4.1",
     "reflect-metadata": "^0.1.2",
