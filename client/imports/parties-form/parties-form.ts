@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { Component } from '@angular/core';
 import { FormBuilder, ControlGroup, Validators, Control } from '@angular/common';
 import { Parties } from '../../../collections/parties.ts';
+import { PartiesUpload } from '../parties-upload/parties-upload';
 import { Meteor } from 'meteor/meteor';
 import {MATERIAL_DIRECTIVES} from 'ng2-material';
 import {MdCheckbox} from '@angular2-material/checkbox';
@@ -12,7 +13,7 @@ import template from './parties-form.html';
 @Component({
   selector: 'parties-form',
   template,
-  directives: [MATERIAL_DIRECTIVES, MdCheckbox, MD_INPUT_DIRECTIVES]
+  directives: [ MATERIAL_DIRECTIVES, MdCheckbox, MD_INPUT_DIRECTIVES, PartiesUpload ]
 })
 export class PartiesForm {
   partiesForm: ControlGroup;
