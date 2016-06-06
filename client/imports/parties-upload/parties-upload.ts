@@ -16,4 +16,8 @@ export class PartiesUpload {
   public fileOver(fileIsOver: boolean): void {
     this.fileIsOver = fileIsOver;
   }
+
+  public onFileDrop(file: File): void {
+    console.log('Got file');
+  }
 }
