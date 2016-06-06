@@ -9,5 +9,11 @@ import template from './parties-upload.html';
   directives: [ FileDropDirective ]
 })
 export class PartiesUpload {
+  public fileIsOver: boolean = false;
+
   constructor() {}
+
+  public fileOver(fileIsOver: boolean): void {
+    this.fileIsOver = fileIsOver;
+  }
 }
