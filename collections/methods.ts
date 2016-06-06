@@ -2,6 +2,8 @@ import {Parties} from './parties.ts';
 import {Email} from 'meteor/email';
 import {check} from 'meteor/check';
 import {Meteor} from 'meteor/meteor';
+import { UploadFS } from 'meteor/jalik:ufs';
+import { ImagesStore } from './images';
 
 function getContactEmail(user:Meteor.User):string {
   if (user.emails && user.emails.length)
@@ -90,3 +92,32 @@ Meteor.methods({
     }
   }
 });
+
+export function upload(sourceFile: File, resolve?: Function, reject?: Function) {
+  // pick from an object only: name, type and size
+  const file = {
+    name: sourceFile.name,
+    type: sourceFile.type,
+    size: sourceFile.size,
+  }
+  const reader = new FileReader();
+
+  // handle progress
+  reader.onload = (ev: ProgressEvent) => {
+    if (ev.type === 'load') {
+      const upload = new UploadFS.Uploader({
+        data: ev.target.result,
+        file,
+        store: ImagesStore,
+        onError: reject,
+        onComplete: resolve
+      });
+
+      upload.start();
+    } else if (ev.type === 'error') {
+      throw new Error(`Couldn't load file`);
+    }
+  };
+  // as ArrayBuffer
+  reader.readAsArrayBuffer(sourceFile);
+}
