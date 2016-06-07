@@ -8,7 +8,7 @@ import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
-import { RsvpPipe } from '../pipes/pipes.ts';
+import { RsvpPipe, DisplayMainImagePipe } from '../pipes/pipes.ts';
 import { Meteor } from 'meteor/meteor';
 import {GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
 import {MATERIAL_DIRECTIVES} from 'ng2-material';
@@ -21,7 +21,7 @@ import template from './parties-list.html';
   viewProviders: [PaginationService],
   template,
   directives: [MATERIAL_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, PartiesForm, ROUTER_DIRECTIVES, PaginationControlsCmp, MD_INPUT_DIRECTIVES],
-  pipes: [PaginatePipe, RsvpPipe]
+  pipes: [PaginatePipe, RsvpPipe, DisplayMainImagePipe]
 })
 @InjectUser()
 export class PartiesList extends MeteorComponent{
@@ -46,6 +46,8 @@ export class PartiesList extends MeteorComponent{
       this.subscribe('parties', options, this.location.get(), () => {
         this.parties = Parties.find({}, { sort: { name: this.nameOrder.get() } });
       }, true);
+
+      this.subscribe('images');
     });
 
     this.autorun(() => {
