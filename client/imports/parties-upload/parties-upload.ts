@@ -16,6 +16,12 @@ export class PartiesUpload extends MeteorComponent {
 
   constructor() {
     super();
+
+    this.autorun(() => {
+      this.subscribe('thumbs', this.files.get(), () => {
+        // subscription ready
+      }, true);
+    });
   }
 
   public fileOver(fileIsOver: boolean): void {
