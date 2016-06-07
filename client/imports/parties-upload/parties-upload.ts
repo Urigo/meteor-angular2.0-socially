@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FileDropDirective } from 'angular2-file-drop';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
@@ -18,6 +18,7 @@ export class PartiesUpload extends MeteorComponent {
   public uploading: boolean = false;
   public files: ReactiveVar<string[]> = new ReactiveVar<string[]>([]);
   public thumbs: Mongo.Cursor<Thumb>;
+  @Output() public onFile: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
     super();
@@ -54,5 +55,7 @@ export class PartiesUpload extends MeteorComponent {
     // update array with files
     this.files.get().push(file._id);
     this.files.set(this.files.get());
+    // emit new file
+    this.onFile.emit(file._id);
   }
 }
