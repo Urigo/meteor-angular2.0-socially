@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FileDropDirective } from 'angular2-file-drop';
 import { MeteorComponent } from 'angular2-meteor';
+import { ReactiveVar } from 'meteor/reactive-var';
 import { upload } from '../../../collections/methods';
 
 import template from './parties-upload.html';
@@ -13,6 +14,7 @@ import template from './parties-upload.html';
 export class PartiesUpload extends MeteorComponent {
   public fileIsOver: boolean = false;
   public uploading: boolean = false;
+  public files: ReactiveVar<string[]> = new ReactiveVar<string[]>([]);
 
   constructor() {
     super();
