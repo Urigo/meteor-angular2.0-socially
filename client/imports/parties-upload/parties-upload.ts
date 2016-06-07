@@ -41,9 +41,16 @@ export class PartiesUpload extends MeteorComponent {
 
     upload(file, (result) => {
       this.uploading = false;
+      this.addFile(result);
     }, (error) => {
       this.uploading = false;
       console.log(`Something went wrong!`, error);
     });
+  }
+
+  public addFile(file) {
+    // update array with files
+    this.files.get().push(file._id);
+    this.files.set(this.files.get());
   }
 }
