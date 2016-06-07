@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FileDropDirective } from 'angular2-file-drop';
+import { upload } from '../../../collections/methods';
 
 @Component({
   selector: 'parties-upload',
@@ -8,6 +9,7 @@ import { FileDropDirective } from 'angular2-file-drop';
 })
 export class PartiesUpload {
   public fileIsOver: boolean = false;
+  public uploading: boolean = false;
 
   constructor() {}
 
@@ -16,6 +18,13 @@ export class PartiesUpload {
   }
 
   public onFileDrop(file: File): void {
-    console.log('Got file');
+    this.uploading = true;
+
+    upload(file, (result) => {
+      this.uploading = false;
+    }, (error) => {
+      this.uploading = false;
+      console.log(`Something went wrong!`, error);
+    });
   }
 }
