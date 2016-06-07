@@ -17,6 +17,7 @@ import template from './parties-form.html';
 })
 export class PartiesForm {
   partiesForm: ControlGroup;
+  images: string[] = [];
 
   constructor() {
     let fb = new FormBuilder();
@@ -38,6 +39,7 @@ export class PartiesForm {
           location: {
             name: party.location
           },
+          images: this.images,
           'public': party.public,
           owner: Meteor.userId()
         });
@@ -50,5 +52,9 @@ export class PartiesForm {
         alert('Please log in to add a party');
       }
     }
+  }
+
+  onImage(imageId: string) {
+    this.images.push(imageId);
   }
 }
