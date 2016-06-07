@@ -9,6 +9,7 @@ interface Party {
     lat?: number;
     lng?: number;
   };
+  images?: Array<string>,
   invited?: Array<string>;
   rsvps?: Array<RSVP>;
 }
