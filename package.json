@@ -18,6 +18,7 @@
     "angular2-google-maps": "0.10.0",
     "angular2-file-drop": "^0.0.3",
     "angular2-meteor": "0.5.5",
+    "angular2-meteor-polyfills": "^0.1.1",
     "angular2-meteor-accounts-ui": "0.4.3",
     "angular2-meteor-auto-bootstrap": "0.5.5",
     "angular2-pagination": "0.2.1",
