@@ -24,6 +24,7 @@
     "es6-shim": "0.35.1",
     "gm": "^1.22.0",
     "ionic-angular": "^2.0.0-beta.8",
+    "ionic-selector": "0.0.2",
     "meteor-node-stubs": "^0.2.3",
     "ng2-material": "0.4.1",
     "reflect-metadata": "0.1.2",
