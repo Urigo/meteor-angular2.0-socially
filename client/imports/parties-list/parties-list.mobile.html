@@ -4,6 +4,7 @@
 
 <ion-content padding>
   <ion-card *ngFor="let party of parties">
+    <img *ngIf="party.images" [src]="party | displayMainImage">
     <ion-card-content>
       <ion-card-title>
         {{party.name}}
