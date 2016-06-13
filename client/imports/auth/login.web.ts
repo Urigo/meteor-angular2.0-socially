@@ -7,10 +7,12 @@ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MdToolbar } from '@angular2-material/toolbar';
 import { Meteor } from 'meteor/meteor';
 
+import template from './login.web.html';
+
 @Component({
   selector: 'login',
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES, MD_INPUT_DIRECTIVES, MdToolbar],
-  templateUrl: '/client/imports/auth/login.html'
+  template
 })
 export class Login extends MeteorComponent {
   loginForm: ControlGroup;
