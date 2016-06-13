@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import {MATERIAL_PROVIDERS, MATERIAL_DIRECTIVES} from 'ng2-material';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MeteorComponent} from 'angular2-meteor';
@@ -51,4 +50,6 @@ class Socially extends MeteorComponent {
   }
 }
 
-bootstrap(Socially, [MATERIAL_PROVIDERS, ROUTER_PROVIDERS, ANGULAR2_GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+export function run(): void {
+  bootstrap(Socially, [MATERIAL_PROVIDERS, ROUTER_PROVIDERS, ANGULAR2_GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+}
