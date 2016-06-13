@@ -1,4 +1,10 @@
 import 'reflect-metadata';
-import { run } from './imports/app/app.web';
+import { Meteor } from 'meteor/meteor';
+import { run as runWeb } from './imports/app/app.web';
+import { run as runMobile } from './imports/app/app.mobile';
 
-run();
+if (Meteor.isCordova) {
+  runMobile();
+} else {
+  runWeb();
+}
