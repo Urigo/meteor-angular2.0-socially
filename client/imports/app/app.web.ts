@@ -15,8 +15,7 @@ import {LoginButtons} from 'angular2-meteor-accounts-ui';
 import '../node_modules/@angular2-material/toolbar/toolbar.css';
 import { DisplayName } from './imports/pipes/pipes';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
-import { Login as LoginWeb } from './imports/auth/login.web';
-import { Login as LoginMobile } from './imports/auth/login.mobile';
+import { Login } from './imports/auth/login.web';
 import { Signup } from './imports/auth/signup';
 import { Recover } from './imports/auth/recover';
 import { Meteor } from 'meteor/meteor';
@@ -47,7 +46,7 @@ class Socially extends MeteorComponent {
 const routes: RouterConfig = [
   { path: '',              	component: PartiesList },
   { path: 'party/:partyId',	component: PartyDetails },
-  { path: 'login', 		component: Meteor.isCordova ? LoginMobile : LoginWeb },
+  { path: 'login', 		component: Login },
   { path: 'signup', 		component: Signup },
   { path: 'recover', 		component: Recover }
 ];
