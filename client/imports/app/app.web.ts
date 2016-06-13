@@ -26,7 +26,7 @@ import { Meteor } from 'meteor/meteor';
 
 @Component({
   selector: 'app',
-  templateUrl: '/client/app.html',
+  templateUrl: '/client/imports/app/app.web.html',
   directives: [ROUTER_DIRECTIVES, LoginButtons, MATERIAL_DIRECTIVES, MdToolbar, RouterLink],
   pipes: [DisplayName]
 })
