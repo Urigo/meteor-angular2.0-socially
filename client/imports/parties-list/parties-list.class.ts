@@ -1,4 +1,11 @@
-export class PartiesList extends MeteorComponent{
+import { MeteorComponent } from 'angular2-meteor';
+import { Mongo } from 'meteor/mongo';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { Meteor } from 'meteor/meteor';
+import { Counts } from 'meteor/tmeasday:publish-counts';
+import { Parties } from '../../../collections/parties';
+
+export class PartiesList extends MeteorComponent {
   parties: Mongo.Cursor<Party>;
   pageSize: number = 10;
   curPage: ReactiveVar<number> = new ReactiveVar<number>(1);
