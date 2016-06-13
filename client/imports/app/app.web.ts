@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import {MATERIAL_PROVIDERS, MATERIAL_DIRECTIVES} from 'ng2-material';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MeteorComponent} from 'angular2-meteor';
@@ -55,4 +54,6 @@ const APP_ROUTER_PROVIDERS = [
   provideRouter(routes)
 ];
 
-bootstrap(Socially, [MATERIAL_PROVIDERS, APP_ROUTER_PROVIDERS, GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+export function run(): void {
+  bootstrap(Socially, [MATERIAL_PROVIDERS, APP_ROUTER_PROVIDERS, GOOGLE_MAPS_PROVIDERS, provide(APP_BASE_HREF, { useValue: '/' })]);
+}
