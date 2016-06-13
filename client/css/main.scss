@@ -21,6 +21,14 @@ body {
   font-family: 'Muli', sans-serif;
 }
 
+body.mobile {
+  overflow: hidden;
+}
+
+body.web {
+  overflow: visible;
+}
+
 .sebm-google-map-container {
   width: 450px;
   height: 450px;
