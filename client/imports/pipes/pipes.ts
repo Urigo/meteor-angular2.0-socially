@@ -46,7 +46,15 @@ export class DisplayMainImagePipe extends MeteorComponent {
     this.autorun(() => {
       const found = Images.findOne(imageId);
       if (found) {
-        imageUrl = found.url;
+        // XXX Make sure to use proper absolute url of an image
+        // jalik:ufs sets an absolute path of a file (let's say localhost:3000)
+        // Might be a problem when running an app in a different port (development)
+        if (!Meteor.isCordova) {
+          imageUrl = found.url;
+        } else {
+          const path = `ufs/${found.store}/${found._id}/${found.name}`;
+          imageUrl = Meteor.absoluteUrl(path);
+        }
       }
     }, true);
 
