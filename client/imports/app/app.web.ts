@@ -21,7 +21,7 @@ import { Signup } from './imports/auth/signup';
 import { Recover } from './imports/auth/recover';
 import { Meteor } from 'meteor/meteor';
 
-import template from './app.html';
+import template from './app.web.html';
 
 @Component({
   selector: 'app',
