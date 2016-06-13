@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { PartiesList as PartiesListBase } from './parties-list.class';
-import { RsvpPipe } from '../pipes/pipes';
+import { RsvpPipe, DisplayMainImagePipe } from '../pipes/pipes';
 
 @Component({
   templateUrl: '/client/imports/parties-list/parties-list.mobile.html',
   pipes: [
-    RsvpPipe
+    RsvpPipe,
+    DisplayMainImagePipe
   ]
 })
 export class PartiesList extends PartiesListBase {
