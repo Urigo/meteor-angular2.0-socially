@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+// Core Components
+
+// Core Globals
+@import "{}/node_modules/ionic-angular/globals.core";
+
+
+// Core App
+@import
+  "{}/node_modules/ionic-angular/components/app/normalize",
+  "{}/node_modules/ionic-angular/components/app/structure",
+  "{}/node_modules/ionic-angular/components/app/scrollbars",
+  "{}/node_modules/ionic-angular/components/app/typography",
+  "{}/node_modules/ionic-angular/util/util";
+
+
+// Core Components
+@import
+  "{}/node_modules/ionic-angular/components/backdrop/backdrop",
+  "{}/node_modules/ionic-angular/components/grid/grid",
+  "{}/node_modules/ionic-angular/components/icon/icon",
+  "{}/node_modules/ionic-angular/components/img/img",
+  "{}/node_modules/ionic-angular/components/infinite-scroll/infinite-scroll",
+  "{}/node_modules/ionic-angular/components/loading/loading",
+  "{}/node_modules/ionic-angular/components/menu/menu",
+  "{}/node_modules/ionic-angular/components/modal/modal",
+  "{}/node_modules/ionic-angular/components/popover/popover",
+  "{}/node_modules/ionic-angular/components/range/range",
+  "{}/node_modules/ionic-angular/components/refresher/refresher",
+  "{}/node_modules/ionic-angular/components/scroll/scroll",
+  "{}/node_modules/ionic-angular/components/show-hide-when/show-hide-when",
+  "{}/node_modules/ionic-angular/components/slides/slides",
+  "{}/node_modules/ionic-angular/components/spinner/spinner",
+  "{}/node_modules/ionic-angular/components/virtual-scroll/virtual-scroll";
+
+
+// Ionicons
+// XXX
+// @import "fonts/ionicons";
+
+
+// iOS Components
+.ios {
+  @import "{}/node_modules/ionic-angular/components.ios";
+  @include ios-body();
+}
+
+// Material Design Components
+.md {
+  @import "{}/node_modules/ionic-angular/components.md";
+  @include md-body();
+}
+
+// Windows Components
+.wp {
+  @import "{}/node_modules/ionic-angular/components.wp";
+  @include wp-body();
+}
