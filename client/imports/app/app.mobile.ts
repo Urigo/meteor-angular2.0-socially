@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { App, Platform, MenuController } from 'ionic-angular';
+import { ionicBootstrap, App, Platform, MenuController } from 'ionic-angular';
+import { METEOR_PROVIDERS } from 'angular2-meteor';
 
 import template from './app.mobile.html';
 
@@ -11,5 +12,7 @@ class Socially {
 }
 
 export function run(): void {
-  console.log('Mobile version is not yet available!');
+  ionicBootstrap(Socially, [
+    METEOR_PROVIDERS
+  ]);
 }
