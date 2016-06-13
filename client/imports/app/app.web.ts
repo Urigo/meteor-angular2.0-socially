@@ -16,8 +16,7 @@ import '../node_modules/@angular2-material/toolbar/toolbar.css';
 import { RouterLink } from '@angular/router-deprecated';
 import { DisplayName } from './imports/pipes/pipes';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
-import { Login as LoginWeb } from './imports/auth/login.web';
-import { Login as LoginMobile } from './imports/auth/login.mobile';
+import { Login } from './imports/auth/login.web';
 import { Signup } from './imports/auth/signup';
 import { Recover } from './imports/auth/recover';
 import { Meteor } from 'meteor/meteor';
@@ -33,7 +32,7 @@ import { Meteor } from 'meteor/meteor';
 @RouteConfig([
   { path: '/', as: 'PartiesList', component: PartiesList },
   { path: '/party/:partyId', as: 'PartyDetails', component: PartyDetails },
-  { path: '/login', as: 'Login', component: Meteor.isCordova ? LoginMobile : LoginWeb },
+  { path: '/login', as: 'Login', component: Login },
   { path: '/signup', as: 'Signup', component: Signup },
   { path: '/recover', as: 'Recover', component: Recover }
 ])
