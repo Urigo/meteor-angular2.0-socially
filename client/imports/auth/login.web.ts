@@ -10,7 +10,7 @@ import { Meteor } from 'meteor/meteor';
 @Component({
   selector: 'login',
   directives: [MATERIAL_DIRECTIVES, RouterLink, MD_INPUT_DIRECTIVES, MdToolbar],
-  templateUrl: '/client/imports/auth/login.html'
+  templateUrl: '/client/imports/auth/login.web.html'
 })
 export class Login extends MeteorComponent {
   loginForm: ControlGroup;
