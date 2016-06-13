@@ -1,10 +1,12 @@
 import { MeteorComponent } from 'angular2-meteor';
+import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Mongo } from 'meteor/mongo';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { Parties } from '../../../collections/parties';
 
+@InjectUser()
 export class PartiesList extends MeteorComponent {
   parties: Mongo.Cursor<Party>;
   pageSize: number = 10;
