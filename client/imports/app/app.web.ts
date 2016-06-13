@@ -6,7 +6,7 @@ import { Component, provide } from '@angular/core';
 import { bootstrap } from 'angular2-meteor-auto-bootstrap';
 import { provideRouter, RouterConfig, ROUTER_DIRECTIVES } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
-import { PartiesList } from './../parties-list/parties-list.ts';
+import { PartiesList } from './../parties-list/parties-list.web';
 import { PartyDetails } from './../party-details/party-details.ts';
 import '../../../collections/methods.ts';
 import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
