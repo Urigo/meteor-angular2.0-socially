@@ -1,0 +1,11 @@
+{
+  "map": {
+    "node_modules/ionic-angular/fonts/ionicons.ttf": "fonts/ionicons.ttf",
+    "node_modules/ionic-angular/fonts/noto-sans-bold.ttf": "fonts/noto-sans-bold.ttf",
+    "node_modules/ionic-angular/fonts/noto-sans-regular.ttf": "fonts/noto-sans-regular.ttf",
+    "node_modules/ionic-angular/fonts/roboto-bold.ttf": "fonts/roboto-bold.ttf",
+    "node_modules/ionic-angular/fonts/roboto-light.ttf": "fonts/roboto-light.ttf",
+    "node_modules/ionic-angular/fonts/roboto-medium.ttf": "fonts/roboto-medium.ttf",
+    "node_modules/ionic-angular/fonts/roboto-regular.ttf": "fonts/roboto-regular.ttf"
+  }
+}
