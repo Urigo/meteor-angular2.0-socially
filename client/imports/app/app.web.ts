@@ -23,7 +23,7 @@ import template from './app.web.html';
 
 @Component({
   selector: 'app',
-  template,
+  template: template,
   directives: [ROUTER_DIRECTIVES, LoginButtons, MATERIAL_DIRECTIVES, MdToolbar],
   pipes: [DisplayName]
 })
