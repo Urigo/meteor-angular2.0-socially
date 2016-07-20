@@ -100,24 +100,14 @@ export function upload(sourceFile: File, resolve?: Function, reject?: Function) 
     type: sourceFile.type,
     size: sourceFile.size,
   }
-  const reader = new FileReader();
 
-  // handle progress
-  reader.onload = (ev: ProgressEvent) => {
-    if (ev.type === 'load') {
-      const upload = new UploadFS.Uploader({
-        data: ev.target.result,
+  const upload = new UploadFS.Uploader({
+        data: sourceFile,
         file,
         store: ImagesStore,
         onError: reject,
         onComplete: resolve
-      });
+  });
 
-      upload.start();
-    } else if (ev.type === 'error') {
-      throw new Error(`Couldn't load file`);
-    }
-  };
-  // as ArrayBuffer
-  reader.readAsArrayBuffer(sourceFile);
+  upload.start();
 }
