@@ -7,6 +7,8 @@ import template from './app.component.html';
   template
 })
 export class AppComponent {
+  parties: any[];
+
   constructor() {
     this.parties = [
       {'name': 'Dubstep-Free Zone',
