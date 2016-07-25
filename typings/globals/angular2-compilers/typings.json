@@ -1,0 +1,12 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/meteor-typings/angular2-compilers/c2ca3d3036b08f04a22b98ed16ff17377499e1e7/typings.json",
+    "raw": "github:meteor-typings/angular2-compilers#c2ca3d3036b08f04a22b98ed16ff17377499e1e7",
+    "main": "main.d.ts",
+    "version": "0.6.0",
+    "global": true,
+    "name": "angular2-compilers",
+    "type": "typings"
+  }
+}
