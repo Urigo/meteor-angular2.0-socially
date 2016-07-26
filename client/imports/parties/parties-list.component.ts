@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
+import { LoginButtons } from 'angular2-meteor-accounts-ui';
 
 import { Parties }   from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
@@ -11,7 +12,7 @@ import template from './parties-list.component.html';
 @Component({
   selector: 'parties-list',
   template,
-  directives: [PartiesFormComponent, ROUTER_DIRECTIVES]
+  directives: [PartiesFormComponent, ROUTER_DIRECTIVES, LoginButtons]
 })
 export class PartiesListComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
