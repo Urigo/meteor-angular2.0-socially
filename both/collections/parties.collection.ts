@@ -1,3 +1,5 @@
 import {Mongo} from 'meteor/mongo';
 
-export const Parties = new Mongo.Collection('parties');
+import {Party} from '../interfaces/party.interface';
+
+export const Parties = new Mongo.Collection<Party>('parties');
