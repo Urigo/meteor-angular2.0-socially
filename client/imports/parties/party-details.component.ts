@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { Tracker } from 'meteor/tracker';
 
 import { Parties } from '../../../both/collections/parties.collection';
@@ -8,7 +8,8 @@ import template from './party-details.component.html';
 
 @Component({
   selector: 'party-details',
-  template
+  template,
+  directives: [ROUTER_DIRECTIVES]
 })
 export class PartyDetailsComponent implements OnInit {
   partyId: string;
