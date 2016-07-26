@@ -16,6 +16,11 @@
       "from": "@angular/core@2.0.0-rc.4",
       "resolved": "https://registry.npmjs.org/@angular/core/-/core-2.0.0-rc.4.tgz"
     },
+    "@angular/forms": {
+      "version": "0.2.0",
+      "from": "@angular/forms@0.2.0",
+      "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-0.2.0.tgz"
+    },
     "@angular/platform-browser": {
       "version": "2.0.0-rc.4",
       "from": "@angular/platform-browser@2.0.0-rc.4",
@@ -35,6 +40,11 @@
       "version": "0.6.2",
       "from": "angular2-meteor@0.6.2",
       "resolved": "https://registry.npmjs.org/angular2-meteor/-/angular2-meteor-0.6.2.tgz"
+    },
+    "angular2-meteor-accounts-ui": {
+      "version": "0.6.1",
+      "from": "angular2-meteor-accounts-ui@latest",
+      "resolved": "https://registry.npmjs.org/angular2-meteor-accounts-ui/-/angular2-meteor-accounts-ui-0.6.1.tgz"
     },
     "angular2-meteor-auto-bootstrap": {
       "version": "0.6.0",
