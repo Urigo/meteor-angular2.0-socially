@@ -33,4 +33,8 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   removeParty(party) {
     Parties.remove(party._id);
   }
+
+  search(value: string) {
+    this.parties = Parties.find(value ? { location: value } : {});
+  }
 }
