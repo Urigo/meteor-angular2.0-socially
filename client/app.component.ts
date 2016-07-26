@@ -17,4 +17,8 @@ export class AppComponent {
   constructor() {
     this.parties = Parties.find();
   }
+
+  removeParty(party) {
+    Parties.remove(party._id);
+  }
 }
