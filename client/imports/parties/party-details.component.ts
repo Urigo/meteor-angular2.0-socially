@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Tracker } from 'meteor/tracker';
 
 import { Parties } from '../../../both/collections/parties.collection';
 
@@ -21,7 +22,9 @@ export class PartyDetailsComponent implements OnInit {
       .subscribe(partyId => {
         this.partyId = partyId;
 
-        this.party = Parties.findOne(this.partyId);
+        Tracker.autorun(() => {
+          this.party = Parties.findOne(this.partyId);
+        });
       });
   }
 }
