@@ -1,8 +1,8 @@
 import {Parties} from '../../../both/collections/parties.collection';
 import {Meteor} from 'meteor/meteor';
 
-Meteor.publish('parties', function() {
-  const selector = {
+function buildQuery(partyId?: string): Object {
+  const isAvailable = {
     $or: [
       { 'public': true },
       {
@@ -14,5 +14,17 @@ Meteor.publish('parties', function() {
     ]
   };
 
-  return Parties.find(selector);
+  if (partyId) {
+    return { $and: [{ _id: partyId }, isAvailable] };
+  }
+
+  return isAvailable;
+}
+
+Meteor.publish('parties', function() {
+  return Parties.find(buildQuery.call(this));
+});
+
+Meteor.publish('party', function(partyId: string) {
+  return Parties.find(buildQuery.call(this, partyId));
 });
