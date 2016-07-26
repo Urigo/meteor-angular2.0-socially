@@ -2,7 +2,6 @@ accounts-base@1.2.9
 accounts-password@1.2.12
 allow-deny@1.0.5
 angular2-compilers@0.6.0
-autopublish@1.0.7
 autoupdate@1.2.11
 babel-compiler@6.9.0
 babel-runtime@0.1.10
