@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tracker } from 'meteor/tracker';
 
@@ -14,7 +14,7 @@ export class PartyDetailsComponent implements OnInit {
   partyId: string;
   party: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private ngZone: NgZone) {}
 
   ngOnInit() {
     this.route.params
@@ -23,7 +23,9 @@ export class PartyDetailsComponent implements OnInit {
         this.partyId = partyId;
 
         Tracker.autorun(() => {
-          this.party = Parties.findOne(this.partyId);
+          this.ngZone.run(() => {
+            this.party = Parties.findOne(this.partyId);
+          });
         });
       });
   }
