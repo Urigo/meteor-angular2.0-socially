@@ -20,7 +20,8 @@ export class PartiesFormComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: [],
-      location: ['', Validators.required]
+      location: ['', Validators.required],
+      public: [false]
     });
   }
 
@@ -28,6 +29,7 @@ export class PartiesFormComponent implements OnInit {
     this.addForm.controls['name']['updateValue']('');
     this.addForm.controls['description']['updateValue']('');
     this.addForm.controls['location']['updateValue']('');
+    this.addForm.controls['public']['updateValue'](false);
   }
 
   addParty() {
