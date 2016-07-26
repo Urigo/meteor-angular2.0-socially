@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { Tracker } from 'meteor/tracker';
+import { Meteor } from 'meteor/meteor';
 
 import { Parties } from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
@@ -33,12 +34,16 @@ export class PartyDetailsComponent implements OnInit {
   }
 
   saveParty() {
-    Parties.update(this.party._id, {
-      $set: {
-        name: this.party.name,
-        description: this.party.description,
-        location: this.party.location
-      }
-    });
+    if (Meteor.userId()) {
+      Parties.update(this.party._id, {
+        $set: {
+          name: this.party.name,
+          description: this.party.description,
+          location: this.party.location
+        }
+      });
+    } else {
+      alert('Please log in to change this party');
+    }
   }
 }
