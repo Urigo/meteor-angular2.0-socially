@@ -33,7 +33,7 @@ export class PartiesFormComponent implements OnInit {
   addParty() {
     if (this.addForm.valid) {
       if (Meteor.userId()) {
-        Parties.insert(this.addForm.value);
+        Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
 
         // XXX will be replaced by this.addForm.reset() in RC5+
         this.resetForm();
