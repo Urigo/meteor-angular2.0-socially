@@ -1,4 +1,4 @@
-<form [formGroup]="addForm">
+<form [formGroup]="addForm" (ngSubmit)="addParty()">
   <label>Name</label>
   <input type="text" formControlName="name">
 
