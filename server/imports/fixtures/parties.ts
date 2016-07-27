@@ -1,8 +1,9 @@
 import { Parties } from '../../../both/collections/parties.collection';
+import { Party } from '../../../both/interfaces/party.interface';
 
 export function loadParties() {
   if (Parties.find().count() === 0) {
-    const parties = [
+    const parties: Party[] = [
       {
         name: 'Dubstep-Free Zone',
         description: 'Can we please just for an evening not listen to dubstep.',
