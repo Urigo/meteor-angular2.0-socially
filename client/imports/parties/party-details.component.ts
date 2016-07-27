@@ -35,11 +35,12 @@ export class PartyDetailsComponent extends MeteorComponent implements OnInit {
         this.subscribe('party', this.partyId, () => {
           this.autorun(() => {
             this.party = Parties.findOne(this.partyId);
+            this.getUsers(this.party);
           }, true);
         }, true);
 
         this.subscribe('uninvited', this.partyId, () => {
-          this.users = Meteor.users.find({_id: {$ne: Meteor.userId()}});
+          this.getUsers(this.party);
         }, true);
       });
   }
@@ -67,5 +68,16 @@ export class PartyDetailsComponent extends MeteorComponent implements OnInit {
 
       alert('User successfully invited.');
     });
+  }
+
+  getUsers(party: Party) {
+    if (party) {
+      this.users = Meteor.users.find({
+        _id: {
+          $nin: party.invited || [],
+          $ne: Meteor.userId()
+        }
+      });
+    }
   }
 }
