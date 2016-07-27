@@ -1,14 +1,14 @@
 <form *ngIf="party" (submit)="saveParty()">
   <label>Name</label>
-  <input type="text" [(ngModel)]="party.name" name="name">
+  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.name" name="name">
 
   <label>Description</label>
-  <input type="text" [(ngModel)]="party.description" name="description">
+  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.description" name="description">
 
   <label>Location</label>
-  <input type="text" [(ngModel)]="party.location" name="location">
+  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.location" name="location">
 
-  <button type="submit">Save</button>
+  <button [disabled]="!isOwner" type="submit">Save</button>
   <a [routerLink]="['/']">Cancel</a>
 </form>
 
