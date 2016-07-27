@@ -43,6 +43,8 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
         sort: { name: this.nameOrder }
       };
 
+      this.paginationService.setCurrentPage(this.paginationService.defaultId, this.curPage.get());
+
       this.subscribe('parties', options, () => {
         this.parties = Parties.find({}, {sort: { name: this.nameOrder }});
       }, true);
