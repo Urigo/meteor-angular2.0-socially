@@ -4,6 +4,7 @@ import { Mongo } from 'meteor/mongo';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
+import { PaginationService, PaginationControlsCmp } from 'ng2-pagination';
 
 import { Parties }   from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
@@ -14,7 +15,8 @@ import template from './parties-list.component.html';
 @Component({
   selector: 'parties-list',
   template,
-  directives: [PartiesFormComponent, ROUTER_DIRECTIVES, LoginButtons]
+  viewProviders: [PaginationService],
+  directives: [PartiesFormComponent, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp]
 })
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
