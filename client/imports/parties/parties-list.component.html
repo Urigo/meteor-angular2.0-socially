@@ -6,6 +6,15 @@
 
   <login-buttons></login-buttons>
 
+  <h1>Parties:</h1>
+
+  <div>
+    <select #sort (change)="changeSortOrder(sort.value)">
+      <option value="1" selected>Ascending</option>
+      <option value="-1">Descending</option>
+    </select>
+  </div>
+
   <ul *ngIf="!loading">
     <li *ngFor="let party of parties">
       <a [routerLink]="['/party', party._id]">{{party.name}}</a>
