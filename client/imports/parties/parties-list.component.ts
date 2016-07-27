@@ -23,6 +23,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   pageSize: number = 10;
   curPage: ReactiveVar<number> = new ReactiveVar<number>(1);
   nameOrder: number = 1;
+  loading: boolean = false;
 
   constructor(private paginationService: PaginationService) {
     super();
@@ -43,10 +44,12 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
         sort: { name: this.nameOrder }
       };
 
+      this.loading = true;
       this.paginationService.setCurrentPage(this.paginationService.defaultId, this.curPage.get());
 
       this.subscribe('parties', options, () => {
         this.parties = Parties.find({}, {sort: { name: this.nameOrder }});
+        this.loading = false;
       }, true);
     });
   }
