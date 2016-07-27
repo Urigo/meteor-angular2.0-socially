@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { Tracker } from 'meteor/tracker';
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
 
 import { Parties } from '../../../both/collections/parties.collection';
@@ -17,6 +18,7 @@ import template from './party-details.component.html';
 export class PartyDetailsComponent extends MeteorComponent implements OnInit {
   partyId: string;
   party: Party;
+  users: Mongo.Cursor<any>;
 
   constructor(private route: ActivatedRoute) {
     super();
@@ -31,6 +33,10 @@ export class PartyDetailsComponent extends MeteorComponent implements OnInit {
         this.subscribe('party', this.partyId, () => {
           this.party = Parties.findOne(this.partyId);
         }, true);
+
+        this.subscribe('uninvited', this.partyId, () => {
+        this.users = Meteor.users.find({_id: {$ne: Meteor.userId()}});
+      }, true);
       });
   }
 
