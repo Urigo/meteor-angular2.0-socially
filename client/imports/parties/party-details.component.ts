@@ -4,6 +4,7 @@ import { Tracker } from 'meteor/tracker';
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
+import { InjectUser } from 'angular2-meteor-accounts-ui';
 
 import { Parties } from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
@@ -17,10 +18,12 @@ import template from './party-details.component.html';
   directives: [ROUTER_DIRECTIVES],
   pipes: [DisplayNamePipe]
 })
+@InjectUser('user')
 export class PartyDetailsComponent extends MeteorComponent implements OnInit {
   partyId: string;
   party: Party;
   users: Mongo.Cursor<any>;
+  user: Meteor.User;
 
   constructor(private route: ActivatedRoute) {
     super();
@@ -89,5 +92,9 @@ export class PartyDetailsComponent extends MeteorComponent implements OnInit {
         }
       });
     }
+  }
+
+  get isOwner(): boolean {
+    return this.party && this.user && this.user._id === this.party.owner;
   }
 }
