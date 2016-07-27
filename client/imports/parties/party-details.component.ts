@@ -7,13 +7,15 @@ import { MeteorComponent } from 'angular2-meteor';
 
 import { Parties } from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
+import { DisplayNamePipe } from '../shared/display-name.pipe';
 
 import template from './party-details.component.html';
 
 @Component({
   selector: 'party-details',
   template,
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
+  pipes: [DisplayNamePipe]
 })
 export class PartyDetailsComponent extends MeteorComponent implements OnInit {
   partyId: string;
