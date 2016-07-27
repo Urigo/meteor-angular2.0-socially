@@ -27,7 +27,7 @@ function buildQuery(partyId?: string, location?: string): Object {
 
   const searchRegEx = { '$regex': '.*' + (location || '') + '.*', '$options': 'i' };
 
-  return { $and: [{ location: searchRegEx }, isAvailable] };
+  return { $and: [{ 'location.name': searchRegEx }, isAvailable] };
 }
 
 Meteor.publish('parties', function(options: any, location?: string) {
