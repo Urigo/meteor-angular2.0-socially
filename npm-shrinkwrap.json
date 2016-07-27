@@ -591,6 +591,11 @@
         }
       }
     },
+    "ng2-pagination": {
+      "version": "0.3.5",
+      "from": "ng2-pagination@latest",
+      "resolved": "https://registry.npmjs.org/ng2-pagination/-/ng2-pagination-0.3.5.tgz"
+    },
     "reflect-metadata": {
       "version": "0.1.3",
       "from": "reflect-metadata@0.1.3",
