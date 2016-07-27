@@ -2,7 +2,7 @@ import {Parties} from '../../../both/collections/parties.collection';
 import {Meteor} from 'meteor/meteor';
 import {Counts} from 'meteor/tmeasday:publish-counts';
 
-function buildQuery(partyId?: string): Object {
+function buildQuery(partyId?: string, location?: string): Object {
   const isAvailable = {
     $or: [
       { 'public': true },
@@ -15,17 +15,22 @@ function buildQuery(partyId?: string): Object {
     ]
   };
 
+
   if (partyId) {
     return { $and: [{ _id: partyId }, isAvailable] };
   }
 
-  return isAvailable;
+  const searchRegEx = { '$regex': '.*' + (location || '') + '.*', '$options': 'i' };
+
+  return { $and: [{ location: searchRegEx }, isAvailable] };
 }
 
-Meteor.publish('parties', function(options: any) {
-  Counts.publish(this, 'numberOfParties', Parties.find(buildQuery.call(this)), { noReady: true });
+Meteor.publish('parties', function(options: any, location?: string) {
+  const selector = buildQuery.call(this, null, location);
 
-  return Parties.find(buildQuery.call(this), options);
+  Counts.publish(this, 'numberOfParties', Parties.find(selector), { noReady: true });
+
+  return Parties.find(selector, options);
 });
 
 Meteor.publish('party', function(partyId: string) {
