@@ -5,4 +5,5 @@ export interface Party {
   location: string;
   owner?: string;
   public: boolean;
+  invited?: string[];
 }
