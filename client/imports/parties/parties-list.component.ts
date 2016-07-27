@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
+import { ReactiveVar } from 'meteor/reactive-var';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 
@@ -18,7 +19,7 @@ import template from './parties-list.component.html';
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
   pageSize: number = 10;
-  curPage: number = 1;
+  curPage: ReactiveVar<number> = new ReactiveVar<number>(1);
   nameOrder: number = 1;
 
   constructor() {
@@ -26,15 +27,17 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   }
 
   ngOnInit() {
-    const options = {
-      limit: this.pageSize,
-      skip: (this.curPage - 1) * this.pageSize,
-      sort: { name: this.nameOrder }
-    };
+    this.autorun(() => {
+      const options = {
+        limit: this.pageSize,
+        skip: (this.curPage.get() - 1) * this.pageSize,
+        sort: { name: this.nameOrder }
+      };
 
-    this.subscribe('parties', options, () => {
-      this.parties = Parties.find({}, {sort: { name: this.nameOrder }});
-    }, true);
+      this.subscribe('parties', options, () => {
+        this.parties = Parties.find({}, {sort: { name: this.nameOrder }});
+      }, true);
+    });
   }
 
   removeParty(party) {
