@@ -70,6 +70,16 @@ export class PartyDetailsComponent extends MeteorComponent implements OnInit {
     });
   }
 
+  reply(rsvp: string) {
+    this.call('reply', this.party._id, rsvp, (error) => {
+      if (error) {
+        alert(`Failed to reply due to ${error}`);
+      } else {
+        alert('You successfully replied.');
+      }
+    });
+  }
+
   getUsers(party: Party) {
     if (party) {
       this.users = Meteor.users.find({
