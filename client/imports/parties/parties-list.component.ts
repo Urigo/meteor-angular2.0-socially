@@ -24,11 +24,18 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   curPage: ReactiveVar<number> = new ReactiveVar<number>(1);
   nameOrder: number = 1;
 
-  constructor() {
+  constructor(private paginationService: PaginationService) {
     super();
   }
 
   ngOnInit() {
+    this.paginationService.register({
+      id: this.paginationService.defaultId,
+      itemsPerPage: this.pageSize,
+      currentPage: this.curPage.get(),
+      totalItems: 30,
+    });
+
     this.autorun(() => {
       const options = {
         limit: this.pageSize,
