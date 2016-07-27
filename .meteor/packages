@@ -24,3 +24,5 @@ hwillson:stub-collections
 dispatch:mocha-phantomjs
 accounts-password
 tmeasday:publish-counts
+check
+email
