@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { PaginationService, PaginationControlsCmp } from 'ng2-pagination';
@@ -20,6 +21,7 @@ import template from './parties-list.component.html';
 })
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
+  partiesSize: number = 0;
   pageSize: number = 10;
   curPage: ReactiveVar<number> = new ReactiveVar<number>(1);
   nameOrder: number = 1;
@@ -34,7 +36,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
       id: this.paginationService.defaultId,
       itemsPerPage: this.pageSize,
       currentPage: this.curPage.get(),
-      totalItems: 30,
+      totalItems: this.partiesSize,
     });
 
     this.autorun(() => {
@@ -51,6 +53,11 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
         this.parties = Parties.find({}, {sort: { name: this.nameOrder }});
         this.loading = false;
       }, true);
+    });
+
+    this.autorun(() => {
+      this.partiesSize = Counts.get('numberOfParties');
+      this.paginationService.setTotalItems(this.paginationService.defaultId, this.partiesSize);
     });
   }
 
