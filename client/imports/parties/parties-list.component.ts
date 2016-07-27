@@ -10,6 +10,7 @@ import { PaginationService, PaginationControlsCmp } from 'ng2-pagination';
 import { Parties }   from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
 import { PartiesFormComponent } from './parties-form.component';
+import { RsvpPipe } from '../shared/rsvp.pipe';
 
 import template from './parties-list.component.html';
 
@@ -17,7 +18,8 @@ import template from './parties-list.component.html';
   selector: 'parties-list',
   template,
   viewProviders: [PaginationService],
-  directives: [PartiesFormComponent, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp]
+  directives: [PartiesFormComponent, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp],
+  pipes: [RsvpPipe]
 })
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
