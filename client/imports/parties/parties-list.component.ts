@@ -3,7 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Counts } from 'meteor/tmeasday:publish-counts';
-import { LoginButtons } from 'angular2-meteor-accounts-ui';
+import { LoginButtons, InjectUser } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { PaginationService, PaginationControlsCmp } from 'ng2-pagination';
 
@@ -21,6 +21,7 @@ import template from './parties-list.component.html';
   directives: [PartiesFormComponent, ROUTER_DIRECTIVES, LoginButtons, PaginationControlsCmp],
   pipes: [RsvpPipe]
 })
+@InjectUser('user')
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
   partiesSize: number = 0;
@@ -29,6 +30,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   nameOrder: ReactiveVar<number> = new ReactiveVar<number>(1);
   location: ReactiveVar<string> = new ReactiveVar<string>(null);
   loading: boolean = false;
+  user: Meteor.User;
 
   constructor(private paginationService: PaginationService) {
     super();
@@ -79,5 +81,9 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
   onPageChanged(page: number) {
     this.curPage.set(page);
+  }
+
+  isOwner(party: Party): boolean {
+    return this.user && this.user._id === party.owner;
   }
 }
