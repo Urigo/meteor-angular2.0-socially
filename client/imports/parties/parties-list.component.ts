@@ -61,4 +61,8 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   search(value: string) {
     this.parties = Parties.find(value ? { location: value } : {});
   }
+
+  onPageChanged(page: number) {
+    this.curPage.set(page);
+  }
 }
