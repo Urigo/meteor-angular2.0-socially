@@ -11,6 +11,11 @@ function buildQuery(partyId?: string, location?: string): Object {
           { owner: this.userId },
           { owner: { $exists: true } }
         ]
+      }, {
+        $and: [
+          { invited: this.userId },
+          { invited: { $exists: true } }
+        ]
       }
     ]
   };
