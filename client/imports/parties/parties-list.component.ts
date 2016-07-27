@@ -33,7 +33,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
     };
 
     this.subscribe('parties', options, () => {
-      this.parties = Parties.find();
+      this.parties = Parties.find({}, {sort: { name: this.nameOrder }});
     }, true);
   }
 
