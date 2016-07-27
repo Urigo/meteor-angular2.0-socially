@@ -17,15 +17,22 @@ import template from './parties-list.component.html';
 })
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
+  pageSize: number = 10;
+  curPage: number = 1;
+  nameOrder: number = 1;
 
   constructor() {
     super();
   }
 
   ngOnInit() {
-    this.parties = Parties.find();
+    const options = {
+      limit: this.pageSize,
+      skip: (this.curPage - 1) * this.pageSize,
+      sort: { name: this.nameOrder }
+    };
 
-    this.subscribe('parties', () => {
+    this.subscribe('parties', options, () => {
       this.parties = Parties.find();
     }, true);
   }
