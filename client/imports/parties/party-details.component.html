@@ -12,7 +12,7 @@
   <a [routerLink]="['/']">Cancel</a>
 </form>
 
-<ul>
+<ul *ngIf="isOwner || isPublic">
   Users to invite:
   <li *ngFor="let user of users">
     <div>{{ user | displayName }}</div>
@@ -20,7 +20,7 @@
   </li>
 </ul>
 
-<div>
+<div *ngIf="isInvited">
   <h2>Reply to the invitation</h2>
   <input type="button" value="I'm going!" (click)="reply('yes')">
   <input type="button" value="Maybe" (click)="reply('maybe')">
