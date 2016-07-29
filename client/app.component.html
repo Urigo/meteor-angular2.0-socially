@@ -4,7 +4,14 @@
   </h2>
   <span flex></span>
   <div class="navbar-right navbar-text">
-    <login-buttons></login-buttons>
+    <div [hidden]="user">
+      <a md-button [routerLink]="['/login']" >Login</a>
+      <a md-button [routerLink]="['/signup']">Sign up</a>
+    </div>
+    <div [hidden]="!user">
+      <span>{{ user | displayName }}</span>
+      <button md-button (click)="logout()">Logout</button>
+    </div>
   </div>
 </md-toolbar>
 <router-outlet flex-gt-sm layout-gt-sm="row"></router-outlet>
