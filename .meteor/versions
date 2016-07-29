@@ -43,11 +43,13 @@ htmljs@1.0.10
 http@1.1.8
 hwillson:stub-collections@1.0.1
 id-map@1.0.8
+jalik:ufs@0.6.2
 jquery@1.11.9
 launch-screen@1.0.12
 livedata@1.0.18
 localstorage@1.0.11
 logging@1.1.14
+matb33:collection-hooks@0.7.15
 meteor@1.2.16
 meteor-base@1.0.4
 minifier-css@1.2.13
