@@ -6,6 +6,10 @@ import { Mongo } from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { GOOGLE_MAPS_DIRECTIVES, MouseEvent } from 'angular2-google-maps/core';
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { MD_CHECKBOX_DIRECTIVES } from '@angular2-material/checkbox';
+import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
+import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 
 import { Parties } from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
@@ -16,7 +20,7 @@ import template from './party-details.component.html';
 @Component({
   selector: 'party-details',
   template,
-  directives: [ROUTER_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, MD_INPUT_DIRECTIVES, MD_CHECKBOX_DIRECTIVES, MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES],
   pipes: [DisplayNamePipe]
 })
 @InjectUser('user')
