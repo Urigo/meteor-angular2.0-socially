@@ -6,13 +6,14 @@ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 
 import { Parties } from '../../../both/collections/parties.collection';
+import { PartiesUpload } from './parties-upload.component';
 
 import template from './parties-form.component.html';
 
 @Component({
   selector: 'parties-form',
   template,
-  directives: [REACTIVE_FORM_DIRECTIVES, MdCheckbox, MD_INPUT_DIRECTIVES, MD_BUTTON_DIRECTIVES]
+  directives: [REACTIVE_FORM_DIRECTIVES, MdCheckbox, MD_INPUT_DIRECTIVES, MD_BUTTON_DIRECTIVES, PartiesUpload]
 })
 export class PartiesFormComponent implements OnInit {
   addForm: FormGroup;
