@@ -6,7 +6,7 @@
   <input [disabled]="!isOwner" type="text" [(ngModel)]="party.description" name="description">
 
   <label>Location</label>
-  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.location" name="location">
+  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.location.name" name="location">
 
   <button [disabled]="!isOwner" type="submit">Save</button>
   <a [routerLink]="['/']">Cancel</a>
