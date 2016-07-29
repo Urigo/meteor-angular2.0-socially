@@ -18,6 +18,7 @@
     "@angular/platform-browser": "2.0.0-rc.4",
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",
     "@angular/router": "3.0.0-alpha.8",
+    "angular2-google-maps": "^0.12.0",
     "angular2-meteor": "0.6.2",
     "angular2-meteor-accounts-ui": "^0.6.1",
     "angular2-meteor-auto-bootstrap": "0.6.0",
