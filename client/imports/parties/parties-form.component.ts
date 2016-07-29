@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Meteor } from 'meteor/meteor';
+import { MdCheckbox } from '@angular2-material/checkbox';
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 
 import { Parties } from '../../../both/collections/parties.collection';
 
@@ -9,7 +12,7 @@ import template from './parties-form.component.html';
 @Component({
   selector: 'parties-form',
   template,
-  directives: [REACTIVE_FORM_DIRECTIVES]
+  directives: [REACTIVE_FORM_DIRECTIVES, MdCheckbox, MD_INPUT_DIRECTIVES, MD_BUTTON_DIRECTIVES]
 })
 export class PartiesFormComponent implements OnInit {
   addForm: FormGroup;
