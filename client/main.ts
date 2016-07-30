@@ -17,9 +17,11 @@ if (Meteor.isCordova) {
   document.addEventListener('deviceready', () => {
     ionicSelector('app');
     runMobile();
+    setClass('mobile');
   });
 } else {
   runWeb();
+  setClass('web');
 }
 
 function runWeb() {
@@ -35,4 +37,11 @@ function runMobile() {
   ionicBootstrap(AppMobileComponent, [
     METEOR_PROVIDERS
   ]);
+}
+
+function setClass(css) {
+  if (!document.body.className) {
+    document.body.className = "";
+  }
+  document.body.className += " " + css;
 }
