@@ -5,7 +5,43 @@
 @charset "UTF-8";
 
 // Core Components
-@import "{}/node_modules/ionic-angular/components.core";
+
+// Core Globals
+@import "globals.core";
+
+
+// Core App
+@import
+  "components/app/normalize",
+  "components/app/structure",
+  "components/app/scrollbars",
+  "components/app/typography",
+  "util/util";
+
+
+// Core Components
+@import
+  "components/backdrop/backdrop",
+  "components/grid/grid",
+  "components/icon/icon",
+  "components/img/img",
+  "components/infinite-scroll/infinite-scroll",
+  "components/loading/loading",
+  "components/menu/menu",
+  "components/modal/modal",
+  "components/popover/popover",
+  "components/range/range",
+  "components/refresher/refresher",
+  "components/scroll/scroll",
+  "components/show-hide-when/show-hide-when",
+  "components/slides/slides",
+  "components/spinner/spinner",
+  "components/virtual-scroll/virtual-scroll";
+
+
+// Ionicons
+@import "fonts/ionicons";
+
 
 // Core Globals
 @import "{}/node_modules/ionic-angular/globals.core";
