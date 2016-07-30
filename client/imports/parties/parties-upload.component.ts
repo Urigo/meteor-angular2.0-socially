@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FileDropDirective } from 'angular2-file-drop';
+import { MeteorComponent } from 'angular2-meteor';
 
 import { upload } from '../../../both/methods/images.methods';
 
@@ -10,11 +11,13 @@ import template from './parties-upload.component.html';
   template,
   directives: [ FileDropDirective ]
 })
-export class PartiesUpload {
+export class PartiesUpload extends MeteorComponent {
   fileIsOver: boolean = false;
   uploading: boolean = false;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   fileOver(fileIsOver: boolean): void {
     this.fileIsOver = fileIsOver;
