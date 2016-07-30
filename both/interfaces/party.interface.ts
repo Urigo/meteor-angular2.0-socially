@@ -7,6 +7,7 @@ export interface Party {
   public: boolean;
   invited?: string[];
   rsvps?: RSVP[];
+  images?: string[];
 }
 
 interface RSVP {
