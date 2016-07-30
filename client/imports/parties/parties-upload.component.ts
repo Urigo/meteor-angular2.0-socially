@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FileDropDirective } from 'angular2-file-drop';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
@@ -12,13 +12,21 @@ import template from './parties-upload.component.html';
   template,
   directives: [ FileDropDirective ]
 })
-export class PartiesUpload extends MeteorComponent {
+export class PartiesUpload extends MeteorComponent implements OnInit {
   fileIsOver: boolean = false;
   uploading: boolean = false;
   files: ReactiveVar<string[]> = new ReactiveVar<string[]>([]);
 
   constructor() {
     super();
+  }
+
+  ngOnInit() {
+    this.autorun(() => {
+      this.subscribe('thumbs', this.files.get(), () => {
+        // subscription ready
+      }, true);
+    });
   }
 
   fileOver(fileIsOver: boolean): void {
