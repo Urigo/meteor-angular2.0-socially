@@ -7,9 +7,11 @@ import { APP_ROUTER_PROVIDERS } from './app.routes';
 
 import '../both/methods/parties.methods';
 
-bootstrap(AppComponent, [
-  disableDeprecatedForms(),
-  provideForms(),
-  APP_ROUTER_PROVIDERS,
-  GOOGLE_MAPS_PROVIDERS
-]);
+function runWeb() {
+  bootstrap(AppComponent, [
+    disableDeprecatedForms(),
+    provideForms(),
+    APP_ROUTER_PROVIDERS,
+    GOOGLE_MAPS_PROVIDERS
+  ]);
+}
