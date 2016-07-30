@@ -5,54 +5,54 @@
 @charset "UTF-8";
 
 // Core Components
-@import "components.core";
+@import "{}/node_modules/ionic-angular/components.core";
 
 // Core Globals
-@import "globals.core";
+@import "{}/node_modules/ionic-angular/globals.core";
 
 
 // Core App
 @import
-  "components/app/normalize",
-  "components/app/structure",
-  "components/app/scrollbars",
-  "components/app/typography",
-  "util/util";
+  "{}/node_modules/ionic-angular/components/app/normalize",
+  "{}/node_modules/ionic-angular/components/app/structure",
+  "{}/node_modules/ionic-angular/components/app/scrollbars",
+  "{}/node_modules/ionic-angular/components/app/typography",
+  "{}/node_modules/ionic-angular/util/util";
 
 
 // Core Components
 @import
-  "components/backdrop/backdrop",
-  "components/grid/grid",
-  "components/icon/icon",
-  "components/img/img",
-  "components/infinite-scroll/infinite-scroll",
-  "components/loading/loading",
-  "components/menu/menu",
-  "components/modal/modal",
-  "components/popover/popover",
-  "components/range/range",
-  "components/refresher/refresher",
-  "components/scroll/scroll",
-  "components/show-hide-when/show-hide-when",
-  "components/slides/slides",
-  "components/spinner/spinner",
-  "components/virtual-scroll/virtual-scroll";
+  "{}/node_modules/ionic-angular/components/backdrop/backdrop",
+  "{}/node_modules/ionic-angular/components/grid/grid",
+  "{}/node_modules/ionic-angular/components/icon/icon",
+  "{}/node_modules/ionic-angular/components/img/img",
+  "{}/node_modules/ionic-angular/components/infinite-scroll/infinite-scroll",
+  "{}/node_modules/ionic-angular/components/loading/loading",
+  "{}/node_modules/ionic-angular/components/menu/menu",
+  "{}/node_modules/ionic-angular/components/modal/modal",
+  "{}/node_modules/ionic-angular/components/popover/popover",
+  "{}/node_modules/ionic-angular/components/range/range",
+  "{}/node_modules/ionic-angular/components/refresher/refresher",
+  "{}/node_modules/ionic-angular/components/scroll/scroll",
+  "{}/node_modules/ionic-angular/components/show-hide-when/show-hide-when",
+  "{}/node_modules/ionic-angular/components/slides/slides",
+  "{}/node_modules/ionic-angular/components/spinner/spinner",
+  "{}/node_modules/ionic-angular/components/virtual-scroll/virtual-scroll";
 
 // iOS Components
 .ios {
-  @import "components.ios";
+  @import "{}/node_modules/ionic-angular/components.ios";
   @include ios-body();
 }
 
 // Material Design Components
 .md {
-  @import "components.md";
+  @import "{}/node_modules/ionic-angular/components.md";
   @include md-body();
 }
 
 // Windows Components
 .wp {
-  @import "components.wp";
+  @import "{}/node_modules/ionic-angular/components.wp";
   @include wp-body();
 }
