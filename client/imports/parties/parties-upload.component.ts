@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FileDropDirective } from 'angular2-file-drop';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
@@ -63,5 +63,9 @@ export class PartiesUpload extends MeteorComponent implements OnInit {
     this.files.set(this.files.get());
     // emit new file
     this.onFile.emit(file._id);
+  }
+
+  reset() {
+    this.files.set([]);
   }
 }
