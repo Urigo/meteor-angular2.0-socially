@@ -3,6 +3,7 @@ import { PaginationService, PaginationControlsCmp } from 'ng2-pagination';
 
 import { PartiesList } from './parties-list.class';
 import { RsvpPipe } from '../shared/rsvp.pipe';
+import { DisplayMainImagePipe } from '../shared/display-main-image.pipe';
 
 import template from './parties-list.mobile.component.html';
 
@@ -10,7 +11,7 @@ import template from './parties-list.mobile.component.html';
   template,
   viewProviders: [PaginationService],
   directives: [PaginationControlsCmp],
-  pipes: [RsvpPipe]
+  pipes: [RsvpPipe, DisplayMainImagePipe]
 })
 export class PartiesListComponent extends PartiesList {
   constructor(paginationService: PaginationService) {
