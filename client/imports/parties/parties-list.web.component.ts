@@ -11,7 +11,7 @@ import { RsvpPipe } from '../shared/rsvp.pipe';
 import { DisplayMainImagePipe } from '../shared/display-main-image.pipe';
 import { PartiesList } from './parties-list.class';
 
-import template from './parties-list.component.html';
+import template from './parties-list.web.component.html';
 
 @Component({
   selector: 'parties-list',
