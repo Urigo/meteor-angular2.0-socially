@@ -7,7 +7,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { DisplayNamePipe } from './imports/shared/display-name.pipe';
 
-import template from './app.component.html';
+import template from './app.web.component.html';
 
 @Component({
   selector: 'app',
