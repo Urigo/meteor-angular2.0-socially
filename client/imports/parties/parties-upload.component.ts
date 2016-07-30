@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FileDropDirective } from 'angular2-file-drop';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Mongo } from 'meteor/mongo';
 
 import { upload } from '../../../both/methods/images.methods';
+import { Thumbs } from '../../../both/collections/images.collection';
+import { Thumb } from '../../../both/interfaces/image.interface';
 
 import template from './parties-upload.component.html';
 
@@ -16,6 +19,7 @@ export class PartiesUpload extends MeteorComponent implements OnInit {
   fileIsOver: boolean = false;
   uploading: boolean = false;
   files: ReactiveVar<string[]> = new ReactiveVar<string[]>([]);
+  thumbs: Mongo.Cursor<Thumb>;
 
   constructor() {
     super();
@@ -24,7 +28,12 @@ export class PartiesUpload extends MeteorComponent implements OnInit {
   ngOnInit() {
     this.autorun(() => {
       this.subscribe('thumbs', this.files.get(), () => {
-        // subscription ready
+        this.thumbs = Thumbs.find({
+          originalStore: 'images',
+          originalId: {
+            $in: this.files.get()
+          }
+        });
       }, true);
     });
   }
