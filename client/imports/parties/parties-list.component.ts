@@ -65,10 +65,13 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
       }, true);
     });
 
+
     this.autorun(() => {
       this.partiesSize = Counts.get('numberOfParties');
       this.paginationService.setTotalItems(this.paginationService.defaultId, this.partiesSize);
     });
+
+    this.subscribe('images');
   }
 
   removeParty(party) {
