@@ -9,10 +9,13 @@ import { AppComponent as AppWebComponent } from './app.web.component';
 import { AppComponent as AppMobileComponent } from './app.mobile.component';
 import { APP_ROUTER_PROVIDERS } from './app.routes';
 
+import ionicSelector from 'ionic-selector';
+
 import '../both/methods/parties.methods';
 
 if (Meteor.isCordova) {
   document.addEventListener('deviceready', () => {
+    ionicSelector('app');
     runMobile();
   });
 } else {
