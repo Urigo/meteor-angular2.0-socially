@@ -15,3 +15,7 @@ function runWeb() {
     GOOGLE_MAPS_PROVIDERS
   ]);
 }
+
+function runMobile() {
+  console.log('Mobile version is not yet available!');
+}
