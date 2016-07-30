@@ -7,7 +7,7 @@ import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { Meteor } from 'meteor/meteor';
 
-import template from './login.component.html';
+import template from './login.web.component.html';
 
 @Component({
   selector: 'login',
