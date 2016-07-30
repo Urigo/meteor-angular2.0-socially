@@ -1,7 +1,7 @@
 import { RouterConfig, provideRouter } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 
-import { PartiesListComponent } from './imports/parties/parties-list.component';
+import { PartiesListComponent } from './imports/parties/parties-list.web.component';
 import { PartyDetailsComponent } from './imports/parties/party-details.component';
 import { LoginComponent } from './imports/auth/login.web.component';
 import { SignupComponent } from './imports/auth/signup.component';
