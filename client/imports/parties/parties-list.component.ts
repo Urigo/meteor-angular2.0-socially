@@ -15,6 +15,7 @@ import { Parties }   from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
 import { PartiesFormComponent } from './parties-form.component';
 import { RsvpPipe } from '../shared/rsvp.pipe';
+import { DisplayMainImagePipe } from '../shared/display-main-image.pipe';
 
 import template from './parties-list.component.html';
 
@@ -23,7 +24,7 @@ import template from './parties-list.component.html';
   template,
   viewProviders: [PaginationService],
   directives: [MD_CARD_DIRECTIVES, MD_TOOLBAR_DIRECTIVES, MD_INPUT_DIRECTIVES, GOOGLE_MAPS_DIRECTIVES, PartiesFormComponent, ROUTER_DIRECTIVES, PaginationControlsCmp],
-  pipes: [RsvpPipe]
+  pipes: [RsvpPipe, DisplayMainImagePipe]
 })
 @InjectUser('user')
 export class PartiesListComponent extends MeteorComponent implements OnInit {
