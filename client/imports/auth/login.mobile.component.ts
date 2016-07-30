@@ -18,6 +18,8 @@ import template from './login.mobile.component.html';
 export class LoginComponent extends MeteorComponent implements OnInit {
   error: string = '';
   phoneForm: FormGroup;
+  verifyForm: FormGroup;
+  isStepTwo: boolean = false;
   phone: string;
 
   constructor(
@@ -31,6 +33,10 @@ export class LoginComponent extends MeteorComponent implements OnInit {
     this.phoneForm = this.formBuilder.group({
       phone: ['', Validators.required]
     });
+
+    this.verifyForm = this.formBuilder.group({
+      code: ['', Validators.required]
+    });
   }
 
   send() {
@@ -41,6 +47,21 @@ export class LoginComponent extends MeteorComponent implements OnInit {
         } else {
           this.phone = this.phoneForm.value.phone;
           this.error = '';
+          // move to code verification
+          this.isStepTwo = true;
+        }
+      });
+    }
+  }
+
+  verify() {
+    if (this.verifyForm.valid) {
+      Accounts.verifyPhone(this.phone, this.verifyForm.value.code, (err) => {
+        if (err) {
+          this.error = err.reason || err;
+        }
+        else {
+          this.router.navigate(['/']);
         }
       });
     }
