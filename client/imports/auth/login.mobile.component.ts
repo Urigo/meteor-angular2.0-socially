@@ -6,6 +6,7 @@ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 
 import template from './login.mobile.component.html';
 
@@ -16,6 +17,8 @@ import template from './login.mobile.component.html';
 })
 export class LoginComponent extends MeteorComponent implements OnInit {
   error: string = '';
+  phoneForm: FormGroup;
+  phone: string;
 
   constructor(
     private router: Router,
@@ -24,5 +27,22 @@ export class LoginComponent extends MeteorComponent implements OnInit {
     super();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.phoneForm = this.formBuilder.group({
+      phone: ['', Validators.required]
+    });
+  }
+
+  send() {
+    if (this.phoneForm.valid) {
+      Accounts.requestPhoneVerification(this.phoneForm.value.phone, (err) => {
+        if (err) {
+          this.error = err.reason || err;
+        } else {
+          this.phone = this.phoneForm.value.phone;
+          this.error = '';
+        }
+      });
+    }
+  }
 }
