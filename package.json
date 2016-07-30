@@ -36,6 +36,7 @@
     "gm": "^1.22.0",
     "ionic-angular": "2.0.0-beta.10",
     "ionic-selector": "0.0.2",
+    "ionicons": "^3.0.0",
     "meteor-node-stubs": "0.2.3",
     "ng2-pagination": "^0.3.5",
     "reflect-metadata": "0.1.3",
