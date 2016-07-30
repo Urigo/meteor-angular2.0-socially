@@ -9,7 +9,9 @@ import { APP_ROUTER_PROVIDERS } from './app.routes';
 import '../both/methods/parties.methods';
 
 if (Meteor.isCordova) {
-  runMobile();
+  document.addEventListener('deviceready', () => {
+    runMobile();
+  });
 } else {
   runWeb();
 }
