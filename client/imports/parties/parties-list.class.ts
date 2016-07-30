@@ -11,7 +11,7 @@ import { Parties } from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
 
 @InjectUser('user')
-export class PartiesListComponent extends MeteorComponent implements OnInit {
+export class PartiesList extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
   partiesSize: number = 0;
   pageSize: number = 10;
