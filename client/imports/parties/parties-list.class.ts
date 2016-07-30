@@ -1,3 +1,14 @@
+import { OnInit } from '@angular/core';
+import { MeteorComponent } from 'angular2-meteor';
+import { Mongo } from 'meteor/mongo';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { Meteor } from 'meteor/meteor';
+import { Counts } from 'meteor/tmeasday:publish-counts';
+import { PaginationService } from 'ng2-pagination';
+
+import { Parties } from '../../../both/collections/parties.collection';
+import { Party } from '../../../both/interfaces/party.interface';
+
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
   partiesSize: number = 0;
