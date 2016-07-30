@@ -1,5 +1,6 @@
 import { OnInit } from '@angular/core';
 import { MeteorComponent } from 'angular2-meteor';
+import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Mongo } from 'meteor/mongo';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
@@ -9,6 +10,7 @@ import { PaginationService } from 'ng2-pagination';
 import { Parties } from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
 
+@InjectUser('user')
 export class PartiesListComponent extends MeteorComponent implements OnInit {
   parties: Mongo.Cursor<Party>;
   partiesSize: number = 0;
