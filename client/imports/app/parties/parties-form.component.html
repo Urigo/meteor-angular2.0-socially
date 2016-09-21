@@ -1,12 +1,12 @@
-<form>
+<form [formGroup]="addForm">
   <label>Name</label>
-  <input type="text">
+  <input type="text" formControlName="name">
 
   <label>Description</label>
-  <input type="text">
+  <input type="text" formControlName="description">
 
   <label>Location</label>
-  <input type="text">
+  <input type="text" formControlName="location">
   
-  <button>Add</button>
+  <button type="submit">Add</button>
 </form>
