@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Meteor } from 'meteor/meteor';
 
 import { Parties } from '../../../../both/collections/parties.collection';
 
@@ -25,6 +26,11 @@ export class PartiesFormComponent implements OnInit {
   }
 
   addParty(): void {
+    if (!Meteor.userId()) {
+      alert('Please log in to add a party');
+      return;
+    }
+
     if (this.addForm.valid) {
       Parties.insert(this.addForm.value);
 
