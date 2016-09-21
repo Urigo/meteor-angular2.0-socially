@@ -1,5 +1,7 @@
-<header>
-  <h2>PARTY_NAME</h2>
+<header *ngIf="party">
+  <h2>{{party.name}}</h2>
 
-  <p>PARTY_DESCRIPTION</p>
+  <p>{{party.description}}</p>
+
+  <p>{{party.location}}</p>
 </header>
