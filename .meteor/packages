@@ -16,10 +16,10 @@ standard-minifier-js@1.2.0_1    # JS minifier run for production mode
 es5-shim@4.6.14_1                # ECMAScript 5 compatibility for older browsers.
 
 autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 angular2-compilers
 practicalmeteor:mocha
 xolvio:cleaner
 hwillson:stub-collections
 dispatch:mocha-phantomjs
 shell-server@0.2.1
+accounts-password
