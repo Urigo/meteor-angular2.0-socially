@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Parties } from '../../../both/collections/parties.collection';
+
 import template from './app.component.html';
 
 @Component({
