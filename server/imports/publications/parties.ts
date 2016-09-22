@@ -1,8 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Parties } from '../../../both/collections/parties.collection';
 
-Meteor.publish('parties', function() {
-  return Parties.find(buildQuery.call(this));
+interface Options {
+  [key: string]: any;
+}
+
+Meteor.publish('parties', function(options: Options) {
+  return Parties.find(buildQuery.call(this), options);
 });
 
 Meteor.publish('party', function(partyId: string) {
