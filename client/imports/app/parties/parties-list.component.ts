@@ -96,6 +96,10 @@ export class PartiesListComponent implements OnInit, OnDestroy {
     this.curPage.next(page);
   }
 
+  changeSortOrder(nameOrder: string): void {
+    this.nameOrder.next(parseInt(nameOrder));
+  }
+
   ngOnDestroy() {
     this.partiesSub.unsubscribe();
     this.optionsSub.unsubscribe();
