@@ -11,3 +11,10 @@
   <button type="submit">Save</button>
   <a [routerLink]="['/']">Cancel</a>
 </form>
+
+<p>Users to invite:</p>
+<ul>
+  <li *ngFor="let user of users | async">
+    <div>{{user.emails[0].address}}</div>
+  </li>
+</ul>
