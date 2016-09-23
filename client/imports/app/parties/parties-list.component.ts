@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
@@ -24,9 +25,9 @@ interface Options extends Pagination {
 export class PartiesListComponent implements OnInit, OnDestroy {
   parties: Observable<Party[]>;
   partiesSub: Subscription;
-  pageSize: number = 10;
-  curPage: number = 1;
-  nameOrder: number = 1;
+  pageSize: Subject<number> = new Subject<number>();
+  curPage: Subject<number> = new Subject<number>();
+  nameOrder: Subject<number> = new Subject<number>();
 
   ngOnInit() {
     const options: Options = {
@@ -42,6 +43,10 @@ export class PartiesListComponent implements OnInit, OnDestroy {
         }
       }).zone();
     });
+
+    this.pageSize.next(10);
+    this.curPage.next(1);
+    this.nameOrder.next(1);
   }
 
   removeParty(party: Party): void {
