@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { PaginationService } from 'ng2-pagination';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import 'rxjs/add/operator/combineLatest';
 
@@ -32,6 +33,8 @@ export class PartiesListComponent implements OnInit, OnDestroy {
   curPage: Subject<number> = new Subject<number>();
   nameOrder: Subject<number> = new Subject<number>();
   optionsSub: Subscription;
+  partiesSize: number = 0;
+  autorunSub: Subscription;
 
   constructor(
     private paginationService: PaginationService
@@ -68,12 +71,17 @@ export class PartiesListComponent implements OnInit, OnDestroy {
       id: this.paginationService.defaultId,
       itemsPerPage: 10,
       currentPage: 1,
-      totalItems: 30,
+      totalItems: this.partiesSize
     });
 
     this.pageSize.next(10);
     this.curPage.next(1);
     this.nameOrder.next(1);
+
+    this.autorunSub = MeteorObservable.autorun().subscribe(() => {
+      this.partiesSize = Counts.get('numberOfParties');
+      this.paginationService.setTotalItems(this.paginationService.defaultId, this.partiesSize);
+    });
   }
 
   removeParty(party: Party): void {
@@ -91,5 +99,6 @@ export class PartiesListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.partiesSub.unsubscribe();
     this.optionsSub.unsubscribe();
+    this.autorunSub.unsubscribe();
   }
 }
