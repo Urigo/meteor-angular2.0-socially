@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { Counts } from 'meteor/tmeasday:publish-counts';
+
 import { Parties } from '../../../both/collections/parties.collection';
 
 interface Options {
@@ -6,6 +8,8 @@ interface Options {
 }
 
 Meteor.publish('parties', function(options: Options) {
+  Counts.publish(this, 'numberOfParties', Parties.collection.find(buildQuery.call(this)), { noReady: true });
+
   return Parties.find(buildQuery.call(this), options);
 });
 
