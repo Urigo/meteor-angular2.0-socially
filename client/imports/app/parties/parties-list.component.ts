@@ -4,6 +4,8 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
+import 'rxjs/add/operator/combineLatest';
+
 import { Parties } from '../../../../both/collections/parties.collection';
 import { Party } from '../../../../both/models/party.model';
 
@@ -28,20 +30,31 @@ export class PartiesListComponent implements OnInit, OnDestroy {
   pageSize: Subject<number> = new Subject<number>();
   curPage: Subject<number> = new Subject<number>();
   nameOrder: Subject<number> = new Subject<number>();
+  optionsSub: Subscription;
 
   ngOnInit() {
-    const options: Options = {
-      limit: this.pageSize,
-      skip: (this.curPage - 1) * this.pageSize,
-      sort: { name: this.nameOrder }
-    };
+    this.optionsSub = Observable.combineLatest(
+      this.pageSize,
+      this.curPage,
+      this.nameOrder
+    ).subscribe(([pageSize, curPage, nameOrder]) => {
+      const options: Options = {
+        limit: pageSize as number,
+        skip: ((curPage as number) - 1) * (pageSize as number),
+        sort: { name: nameOrder as number }
+      };
 
-    this.partiesSub = MeteorObservable.subscribe('parties', options).subscribe(() => {
-      this.parties = Parties.find({}, {
-        sort: {
-          name: this.nameOrder
-        }
-      }).zone();
+      if (this.partiesSub) {
+        this.partiesSub.unsubscribe();
+      }
+      
+      this.partiesSub = MeteorObservable.subscribe('parties', options).subscribe(() => {
+        this.parties = Parties.find({}, {
+          sort: {
+            name: nameOrder
+          }
+        }).zone();
+      });
     });
 
     this.pageSize.next(10);
@@ -59,5 +72,6 @@ export class PartiesListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.partiesSub.unsubscribe();
+    this.optionsSub.unsubscribe();
   }
 }
