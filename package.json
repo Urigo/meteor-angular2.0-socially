@@ -20,6 +20,7 @@
     "angular2-meteor-tests-polyfills": "0.0.2",
     "meteor-node-stubs": "0.2.3",
     "meteor-rxjs": "0.4.3",
+    "ng2-pagination": "0.5.1",
     "reflect-metadata": "0.1.8",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "0.6.26",
