@@ -84,6 +84,10 @@ export class PartiesListComponent implements OnInit, OnDestroy {
     this.parties = Parties.find(value ? { location: value } : {}).zone();
   }
 
+  onPageChanged(page: number): void {
+    this.curPage.next(page);
+  }
+
   ngOnDestroy() {
     this.partiesSub.unsubscribe();
     this.optionsSub.unsubscribe();
