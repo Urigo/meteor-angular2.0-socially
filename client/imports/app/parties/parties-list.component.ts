@@ -49,6 +49,8 @@ export class PartiesListComponent implements OnInit, OnDestroy {
         sort: { name: nameOrder as number }
       };
 
+      this.paginationService.setCurrentPage(this.paginationService.defaultId, curPage as number);
+
       if (this.partiesSub) {
         this.partiesSub.unsubscribe();
       }
