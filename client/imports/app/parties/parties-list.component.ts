@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+import { PaginationService } from 'ng2-pagination';
 
 import 'rxjs/add/operator/combineLatest';
 
@@ -32,6 +33,10 @@ export class PartiesListComponent implements OnInit, OnDestroy {
   nameOrder: Subject<number> = new Subject<number>();
   optionsSub: Subscription;
 
+  constructor(
+    private paginationService: PaginationService
+  ) {}
+
   ngOnInit() {
     this.optionsSub = Observable.combineLatest(
       this.pageSize,
@@ -55,6 +60,13 @@ export class PartiesListComponent implements OnInit, OnDestroy {
           }
         }).zone();
       });
+    });
+
+    this.paginationService.register({
+      id: this.paginationService.defaultId,
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 30,
     });
 
     this.pageSize.next(10);
