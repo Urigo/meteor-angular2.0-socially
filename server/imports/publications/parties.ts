@@ -7,10 +7,12 @@ interface Options {
   [key: string]: any;
 }
 
-Meteor.publish('parties', function(options: Options) {
-  Counts.publish(this, 'numberOfParties', Parties.collection.find(buildQuery.call(this)), { noReady: true });
+Meteor.publish('parties', function(options: Options, location?: string) {
+  const selector = buildQuery.call(this, null, location);
 
-  return Parties.find(buildQuery.call(this), options);
+  Counts.publish(this, 'numberOfParties', Parties.collection.find(selector), { noReady: true });
+
+  return Parties.find(selector, options);
 });
 
 Meteor.publish('party', function(partyId: string) {
@@ -18,7 +20,7 @@ Meteor.publish('party', function(partyId: string) {
 });
 
 
-function buildQuery(partyId?: string): Object {
+function buildQuery(partyId?: string, location?: string): Object {
   const isAvailable = {
     $or: [{
       // party is public
@@ -48,5 +50,13 @@ function buildQuery(partyId?: string): Object {
     };
   }
 
-  return isAvailable;
+  const searchRegEx = { '$regex': '.*' + (location || '') + '.*', '$options': 'i' };
+
+  return {
+    $and: [{
+        location: searchRegEx
+      },
+      isAvailable
+    ]
+  };
 }
