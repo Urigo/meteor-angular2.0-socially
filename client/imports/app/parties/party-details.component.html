@@ -15,6 +15,6 @@
 <p>Users to invite:</p>
 <ul>
   <li *ngFor="let user of users | async">
-    <div>{{user.emails[0].address}}</div>
+    <div>{{user | displayName}}</div>
   </li>
 </ul>
