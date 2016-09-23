@@ -36,7 +36,11 @@ export class PartiesListComponent implements OnInit, OnDestroy {
     };
 
     this.partiesSub = MeteorObservable.subscribe('parties', options).subscribe(() => {
-      this.parties = Parties.find({}).zone();
+      this.parties = Parties.find({}, {
+        sort: {
+          name: this.nameOrder
+        }
+      }).zone();
     });
   }
 
