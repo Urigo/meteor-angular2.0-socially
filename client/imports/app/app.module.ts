@@ -11,6 +11,7 @@ import { routes, ROUTES_PROVIDERS } from './app.routes';
 import { PARTIES_DECLARATIONS } from './parties';
 import { SHARED_DECLARATIONS } from './shared';
 import { MaterialModule } from "@angular/material";
+import { AUTH_DECLARATIONS } from "./auth/index";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { MaterialModule } from "@angular/material";
   declarations: [
     AppComponent,
     ...PARTIES_DECLARATIONS,
-    ...SHARED_DECLARATIONS
+    ...SHARED_DECLARATIONS,
+    ...AUTH_DECLARATIONS
   ],
   providers: [
     ...ROUTES_PROVIDERS
