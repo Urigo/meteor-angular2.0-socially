@@ -91,6 +91,14 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
+  reply(rsvp: string) {
+    MeteorObservable.call('reply', this.party._id, rsvp).subscribe(() => {
+      alert('You successfully replied.');
+    }, (error) => {
+      alert(`Failed to reply due to ${error}`);
+    });
+  }
+
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
     this.partySub.unsubscribe();
