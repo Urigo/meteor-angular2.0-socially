@@ -73,6 +73,14 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
+  invite(user: Meteor.User) {
+    MeteorObservable.call('invite', this.party._id, user._id).subscribe(() => {
+      alert('User successfully invited.');
+    }, (error) => {
+      alert(`Failed to invite due to ${error}`);
+    });
+  }
+
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
     this.partySub.unsubscribe();
