@@ -1,61 +1,50 @@
-<div class="row ma-party-details-container">
-  <div class="col-sm-6 col-sm-offset-3">
-    <legend>View and Edit Your Party Details:</legend>
-    <form class="form-horizontal" *ngIf="party" (submit)="saveParty()">
-      <div class="form-group">
-        <label>Party Name</label>
-        <input [disabled]="!isOwner" type="text" [(ngModel)]="party.name" name="name" class="form-control">
-      </div>
-
-      <div class="form-group">
-        <label>Description</label>
-        <input [disabled]="!isOwner" type="text" [(ngModel)]="party.description" name="description" class="form-control">
-      </div>
-
-      <div class="form-group">
+<div layout="row" flex class="ma-party-details">
+  <div flex="33" offset="33">
+    <div class="md-content new-party-form-container">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h3>Your party details:</h3>
+        </div>
+      </md-toolbar>
+      <form layout="column" *ngIf="party" (submit)="saveParty()">
+        <label>Party Name: </label>
+        <md-input [disabled]="!isOwner" [(ngModel)]="party.name" name="name"></md-input>
+        <label>Party Description</label>
+        <md-input [disabled]="!isOwner" [(ngModel)]="party.description" name="description"></md-input>
         <label>Location name</label>
-        <input [disabled]="!isOwner" type="text" [(ngModel)]="party.location.name" name="location" class="form-control">
-      </div>
+        <md-input [disabled]="!isOwner" [(ngModel)]="party.location.name" name="location"></md-input>
+        <md-checkbox [disabled]="!isOwner" [(checked)]="party.public" name="public" aria-label="Public">
+          Is public
+        </md-checkbox>
 
-      <div class="form-group">
-        <button [disabled]="!isOwner" type="submit" class="btn btn-primary">Save</button>
-        <a [routerLink]="['/']" class="btn">Back</a>
-      </div>
-    </form>
+        <div layout="row" layout-align="left">
+          <button [disabled]="!isOwner" type="submit" md-raised-button class="md-raised md-primary">Save</button>
+          <a [routerLink]="['/']" md-raised-button class="md-raised">Back</a>
+        </div>
 
-    <ul class="ma-invite-list" *ngIf="isOwner || isPublic">
-      <h3>
-        Users to invite:
-      </h3>
-      <li *ngFor="let user of users | async">
-        <div>{{ user | displayName }}</div>
-        <button (click)="invite(user)" class="btn btn-primary btn-sm">Invite</button>
-      </li>
-    </ul>
+        <md-list>
+          <div class="md-no-sticky">Users to invite:</div>
+          <md-list-item *ngFor="let user of users | async">
+            <div>{{ user | displayName }}</div>
+            <button (click)="invite(user)" md-raised-button class="md-raised">Invite</button>
+          </md-list-item>
+        </md-list>
 
-    <div *ngIf="isInvited">
-      <h2>Reply to the invitation</h2>
-      <input type="button" class="btn btn-primary" value="I'm going!" (click)="reply('yes')">
-      <input type="button" class="btn btn-warning" value="Maybe" (click)="reply('maybe')">
-      <input type="button" class="btn btn-danger" value="No" (click)="reply('no')">
-    </div>
-
-    <h3 class="ma-map-title">
-      Click the map to set the party location
-    </h3>
-
-    <div class="angular-google-map-container">
-      <sebm-google-map
-        [latitude]="lat || centerLat"
-        [longitude]="lng || centerLng"
-        [zoom]="8"
-        (mapClick)="mapClicked($event)">
-        <sebm-google-map-marker
-          *ngIf="lat && lng"
-          [latitude]="lat"
-          [longitude]="lng">
-        </sebm-google-map-marker>
-      </sebm-google-map>
+        <div class="angular-google-map-container">
+          <sebm-google-map
+            style="height: 300px;"
+            [latitude]="lat || centerLat"
+            [longitude]="lng || centerLng"
+            [zoom]="8"
+            (mapClick)="mapClicked($event)">
+            <sebm-google-map-marker
+              *ngIf="lat && lng"
+              [latitude]="lat"
+              [longitude]="lng">
+            </sebm-google-map-marker>
+          </sebm-google-map>
+        </div>
+      </form>
     </div>
   </div>
 </div>
