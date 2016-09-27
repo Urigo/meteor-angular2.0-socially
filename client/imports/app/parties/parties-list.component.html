@@ -1,5 +1,5 @@
 <div>
-  <parties-form style="float: left"></parties-form>
+  <parties-form [hidden]="!user" style="float: left"></parties-form>
   <input type="text" #searchtext placeholder="Search by Location">
   <button type="button" (click)="search(searchtext.value)">Search</button>
   
@@ -19,7 +19,7 @@
       <a [routerLink]="['/party', party._id]">{{party.name}}</a>
       <p>{{party.description}}</p>
       <p>{{party.location}}</p>
-      <button (click)="removeParty(party)">X</button>
+      <button [hidden]="!isOwner(party)" (click)="removeParty(party)">X</button>
       <div>
         Who is coming:
         Yes - {{party | rsvp:'yes'}}
