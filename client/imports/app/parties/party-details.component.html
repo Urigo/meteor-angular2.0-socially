@@ -28,3 +28,15 @@
   <input type="button" value="Maybe" (click)="reply('maybe')">
   <input type="button" value="No" (click)="reply('no')">
 </div>
+
+<sebm-google-map
+  [latitude]="lat || centerLat"
+  [longitude]="lng || centerLng"
+  [zoom]="8"
+  (mapClick)="mapClicked($event)">
+  <sebm-google-map-marker
+    *ngIf="lat && lng"
+    [latitude]="lat"
+    [longitude]="lng">
+  </sebm-google-map-marker>
+</sebm-google-map>
