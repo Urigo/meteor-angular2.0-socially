@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 
-import template from './login.component.html';
+import template from './login.component.web.html';
 
 @Component({
   selector: 'login',
