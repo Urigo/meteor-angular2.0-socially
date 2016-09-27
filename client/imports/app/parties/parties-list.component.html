@@ -28,6 +28,7 @@
           <div *ngFor="let party of parties | async">
             <md-card>
               <md-card-content>
+                <img *ngIf="party.images" class="party-main-image" [src]="party | displayMainImage">
                 <h2 class="md-title ma-name">
                   <a [routerLink]="['/party', party._id]">{{party.name}}</a>
                 </h2>
