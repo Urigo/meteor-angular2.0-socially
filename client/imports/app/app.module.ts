@@ -12,6 +12,7 @@ import { PARTIES_DECLARATIONS } from './parties';
 import { SHARED_DECLARATIONS } from './shared';
 import { MaterialModule } from "@angular/material";
 import { AUTH_DECLARATIONS } from "./auth/index";
+import { FileDropModule } from "angular2-file-drop";
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { AUTH_DECLARATIONS } from "./auth/index";
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAWoBdZHCNh5R-hB5S5ZZ2oeoYyfdDgniA'
     }),
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    FileDropModule
   ],
   declarations: [
     AppComponent,
