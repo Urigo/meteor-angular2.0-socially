@@ -1,15 +1,21 @@
-<form [formGroup]="addForm" (ngSubmit)="addParty()">
-  <label>Name</label>
-  <input type="text" formControlName="name">
+<form [formGroup]="addForm" (ngSubmit)="addParty()" class="form-inline">
+  <fieldset class="form-group">
+    <label for="partyName">Party name</label>
+    <input id="partyName" class="form-control" type="text" formControlName="name" placeholder="Party name" />
 
-  <label>Description</label>
-  <input type="text" formControlName="description">
+    <label for="description">Description</label>
+    <input id="description" class="form-control" type="text" formControlName="description" placeholder="Description">
 
-  <label>Location</label>
-  <input type="text" formControlName="location">
+    <label for="location_name">Location</label>
+    <input id="location_name" class="form-control" type="text" formControlName="location" placeholder="Location name">
 
-  <label>Public</label>
-  <input type="checkbox" formControlName="public">
-  
-  <button type="submit">Add</button>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" formControlName="public">
+        Public
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+  </fieldset>
 </form>
