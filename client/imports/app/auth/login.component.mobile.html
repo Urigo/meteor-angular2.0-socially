@@ -9,13 +9,23 @@
         <p class="md-body-2"> Sign in with SMS</p>
       </div>
 
-      <form [formGroup]="phoneForm" #f="ngForm" (ngSubmit)="send()"
+      <form [formGroup]="phoneForm" *ngIf="!isStepTwo" #f="ngForm" (ngSubmit)="send()"
             layout="column" layout-fill layout-padding layout-margin>
 
         <md-input formControlName="phone" type="text" placeholder="Phone"></md-input>
 
         <div layout="row" layout-align="space-between center">
           <button md-raised-button class="md-primary" type="submit" aria-label="send">Send SMS</button>
+        </div>
+      </form>
+
+      <form *ngIf="isStepTwo" [formGroup]="verifyForm" #f="ngForm" (ngSubmit)="verify()"
+            layout="column" layout-fill layout-padding layout-margin>
+
+        <md-input formControlName="code" type="text" placeholder="Code"></md-input>
+
+        <div layout="row" layout-align="space-between center">
+          <button md-raised-button class="md-primary" type="submit" aria-label="verify">Verify code</button>
         </div>
       </form>
 
