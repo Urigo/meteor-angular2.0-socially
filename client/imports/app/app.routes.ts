@@ -3,14 +3,15 @@ import { Meteor } from 'meteor/meteor';
 
 import { PartiesListComponent } from './parties/parties-list.component';
 import { PartyDetailsComponent } from './parties/party-details.component';
-import {LoginComponent} from "./auth/login.component";
 import {SignupComponent} from "./auth/singup.component";
 import {RecoverComponent} from "./auth/recover.component";
+import {MobileLoginComponent} from "./auth/login.component.mobile";
+import {LoginComponent} from "./auth/login.component.web";
 
 export const routes: Route[] = [
   { path: '', component: PartiesListComponent },
   { path: 'party/:partyId', component: PartyDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: Meteor.isCordova ? MobileLoginComponent : LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'recover', component: RecoverComponent }
 ];
