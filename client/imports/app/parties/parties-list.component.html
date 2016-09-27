@@ -19,6 +19,7 @@
     <pagination-controls class="pagination" (pageChange)="onPageChanged($event)"></pagination-controls>
 
     <md-card *ngFor="let party of parties | async" class="party-card">
+      <img *ngIf="party.images && party.images.length > 0" class="party-main-image" [src]="party | displayMainImage">
       <h2 class="party-name">
         <a [routerLink]="['/party', party._id]">{{party.name}}</a>
       </h2>
