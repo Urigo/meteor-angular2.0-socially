@@ -1,0 +1,19 @@
+<div class="md-content" layout="row" layout-align="center start" layout-fill layout-margin>
+  <div layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+    <md-toolbar class="md-primary" color="primary">
+      Sign in
+    </md-toolbar>
+
+    <div layout="column" layout-fill layout-margin layout-padding>
+      <div layout="row" layout-fill layout-margin>
+        <p class="md-body-2"> Sign in with SMS</p>
+      </div>
+
+      <div [hidden]="error == ''">
+        <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+          <p class="md-body-1">{{ error }}</p>
+        </md-toolbar>
+      </div>
+    </div>
+  </div>
+</div>
