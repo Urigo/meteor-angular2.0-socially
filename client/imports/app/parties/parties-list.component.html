@@ -18,7 +18,7 @@
     <li *ngFor="let party of parties | async">
       <a [routerLink]="['/party', party._id]">{{party.name}}</a>
       <p>{{party.description}}</p>
-      <p>{{party.location}}</p>
+      <p>{{party.location.name}}</p>
       <button [hidden]="!isOwner(party)" (click)="removeParty(party)">X</button>
       <div>
         Who is coming:
@@ -28,6 +28,19 @@
       </div>
     </li>
   </ul>
+
+  <sebm-google-map
+    [latitude]="0"
+    [longitude]="0"
+    [zoom]="1">
+    <div *ngFor="let party of parties | async">
+      <sebm-google-map-marker
+        *ngIf="party.location.lat"
+        [latitude]="party.location.lat"
+        [longitude]="party.location.lng">
+      </sebm-google-map-marker>
+    </div>
+  </sebm-google-map>
 
   <pagination-controls (pageChange)="onPageChanged($event)"></pagination-controls>
 </div>
