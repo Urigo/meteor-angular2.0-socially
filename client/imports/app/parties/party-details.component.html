@@ -16,5 +16,6 @@
 <ul>
   <li *ngFor="let user of users | async">
     <div>{{user | displayName}}</div>
+    <button (click)="invite(user)">Invite</button>
   </li>
 </ul>
