@@ -43,6 +43,7 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
         this.partySub = MeteorObservable.subscribe('party', this.partyId).subscribe(() => {
           MeteorObservable.autorun().subscribe(() => {
             this.party = Parties.findOne(this.partyId);
+            this.getUsers(this.party);
           });
         });
 
@@ -51,13 +52,20 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
         }
 
         this.uninvitedSub = MeteorObservable.subscribe('uninvited', this.partyId).subscribe(() => {
-           this.users = Users.find({
-             _id: {
-               $ne: Meteor.userId()
-              }
-            }).zone();
+          this.getUsers(this.party);
         });
       });
+  }
+
+  getUsers(party: Party) {
+    if (party) {
+      this.users = Users.find({
+        _id: {
+          $nin: party.invited || [],
+          $ne: Meteor.userId()
+        }
+      }).zone();
+    }
   }
 
   saveParty() {
