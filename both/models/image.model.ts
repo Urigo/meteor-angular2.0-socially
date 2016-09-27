@@ -13,3 +13,8 @@ export interface Image {
   url: string;
   userId?: string;
 }
+
+export interface Thumb extends Image  {
+  originalStore?: string;
+  originalId?: string;
+}
