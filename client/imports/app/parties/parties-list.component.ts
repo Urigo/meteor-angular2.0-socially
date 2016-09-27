@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { PaginationService } from 'ng2-pagination';
 import { Counts } from 'meteor/tmeasday:publish-counts';
+import { InjectUser } from "angular2-meteor-accounts-ui";
 
 import 'rxjs/add/operator/combineLatest';
 
@@ -26,6 +27,7 @@ interface Options extends Pagination {
   selector: 'parties-list',
   template
 })
+@InjectUser('user')
 export class PartiesListComponent implements OnInit, OnDestroy {
   parties: Observable<Party[]>;
   partiesSub: Subscription;
@@ -36,6 +38,7 @@ export class PartiesListComponent implements OnInit, OnDestroy {
   partiesSize: number = 0;
   autorunSub: Subscription;
   location: Subject<string> = new Subject<string>();
+  user: Meteor.User;
 
   constructor(
     private paginationService: PaginationService
@@ -102,6 +105,10 @@ export class PartiesListComponent implements OnInit, OnDestroy {
 
   changeSortOrder(nameOrder: string): void {
     this.nameOrder.next(parseInt(nameOrder));
+  }
+
+  isOwner(party: Party): boolean {
+    return this.user && this.user._id === party.owner;
   }
 
   ngOnDestroy() {
