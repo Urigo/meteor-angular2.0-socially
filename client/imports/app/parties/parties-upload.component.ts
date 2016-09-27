@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 
 import template from './parties-upload.component.html';
 
+import { upload } from '../../../../both/methods/images.methods';
+
 @Component({
   selector: 'parties-upload',
   template
 })
 export class PartiesUploadComponent {
   fileIsOver: boolean = false;
+  uploading: boolean = false;
 
   constructor() {}
 
@@ -16,6 +19,15 @@ export class PartiesUploadComponent {
   }
 
   onFileDrop(file: File): void {
-    console.log('Got file');
+    this.uploading = true;
+
+    upload(file)
+      .then(() => {
+        this.uploading = false;
+      })
+      .catch((error) => {
+        this.uploading = false;
+        console.log(`Something went wrong!`, error);
+      });
   }
 }
