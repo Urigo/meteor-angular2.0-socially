@@ -19,3 +19,10 @@
     <button (click)="invite(user)">Invite</button>
   </li>
 </ul>
+
+<div>
+  <h2>Reply to the invitation</h2>
+  <input type="button" value="I'm going!" (click)="reply('yes')">
+  <input type="button" value="Maybe" (click)="reply('maybe')">
+  <input type="button" value="No" (click)="reply('no')">
+</div>
