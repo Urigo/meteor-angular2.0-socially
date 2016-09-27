@@ -3,7 +3,7 @@ import { CollectionObject } from './collection-object.model';
 export interface Party extends CollectionObject {
   name: string;
   description: string;
-  location: string;
+  location: Location;
   owner?: string;
   public: boolean;
   invited?: string[];
@@ -13,4 +13,10 @@ export interface Party extends CollectionObject {
 interface RSVP {
   userId: string;
   response: string;
+}
+
+interface Location {
+  name: string;
+  lat?: number;
+  lng?: number;
 }
