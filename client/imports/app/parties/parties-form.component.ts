@@ -14,6 +14,7 @@ import style from './parties-form.component.scss';
 export class PartiesFormComponent implements OnInit {
   addForm: FormGroup;
   newPartyPosition: {lat:number, lng: number} = {lat: 37.4292, lng: -122.1381};
+  images: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder
@@ -47,11 +48,16 @@ export class PartiesFormComponent implements OnInit {
           lat: this.newPartyPosition.lat,
           lng: this.newPartyPosition.lng
         },
+        images: this.images,
         public: this.addForm.value.public,
         owner: Meteor.userId()
       });
 
       this.addForm.reset();
     }
+  }
+
+  onImage(imageId: string) {
+    this.images.push(imageId);
   }
 }
