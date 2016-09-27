@@ -13,12 +13,18 @@ export class MobileLoginComponent implements OnInit {
   error: string = '';
   phoneForm: FormGroup;
   phone: string;
+  verifyForm: FormGroup;
+  isStepTwo: boolean = false;
 
   constructor(private router: Router, private zone: NgZone, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.phoneForm = this.formBuilder.group({
       phone: ['', Validators.required]
+    });
+
+    this.verifyForm = this.formBuilder.group({
+        code: ['', Validators.required]
     });
   }
 
@@ -31,6 +37,23 @@ export class MobileLoginComponent implements OnInit {
           } else {
             this.phone = this.phoneForm.value.phone;
             this.error = '';
+            this.isStepTwo = true;
+          }
+        });
+      });
+    }
+  }
+
+
+  verify() {
+    if (this.verifyForm.valid) {
+      Accounts.verifyPhone(this.phone, this.verifyForm.value.code, (err) => {
+        this.zone.run(() => {
+          if (err) {
+            this.error = err.reason || err;
+          }
+          else {
+            this.router.navigate(['/']);
           }
         });
       });
