@@ -41,7 +41,9 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
         }
 
         this.partySub = MeteorObservable.subscribe('party', this.partyId).subscribe(() => {
-          this.party = Parties.findOne(this.partyId);
+          MeteorObservable.autorun().subscribe(() => {
+            this.party = Parties.findOne(this.partyId);
+          });
         });
 
         if (this.uninvitedSub) {
