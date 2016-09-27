@@ -1,32 +1,24 @@
-@import "./imports/app/colors.scss";
+@import '../node_modules/@angular/material/core/theming/all-theme';
 
-html, body {
-  height: 100%;
+@include md-core();
+$app-primary: md-palette($md-light-blue, 500, 100, 700);
+$app-accent:  md-palette($md-pink, A200, A100, A400);
+$app-warn:    md-palette($md-red);
+$app-theme: md-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);
+
+.fill-remaining-space {
+  flex: 1 1 auto;
 }
 
 body {
   background-color: #f8f8f8;
   font-family: 'Muli', sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 .sebm-google-map-container {
   width: 450px;
   height: 450px;
-}
-
-.navbar {
-  background-color: #ffffff;
-  border-bottom: #eee 1px solid;
-  color: $color3;
-  font-family: 'Muli', sans-serif;
-  a {
-    color: $color3;
-    text-decoration: none !important;
-  }
-
-  .navbar-right-container {
-    position: absolute;
-    top: 17px;
-    right: 17px;
-  }
 }
