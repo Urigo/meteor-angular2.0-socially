@@ -6,7 +6,7 @@
         <h2>Add it now! ></h2>
       </div>
       <div class="form-center">
-        <form *ngIf="user" [formGroup]="addForm" (ngSubmit)="addParty()">
+        <form *ngIf="user" [formGroup]="addForm" (ngSubmit)="addParty(); upload.reset();">
           <div style="display: table-row">
             <div class="form-inputs">
               <md-input dividerColor="accent" formControlName="name" placeholder="Party name"></md-input>
