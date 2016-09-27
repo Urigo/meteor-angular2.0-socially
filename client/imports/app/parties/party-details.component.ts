@@ -106,6 +106,20 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
     return this.party && this.user && this.user._id === this.party.owner;
   }
 
+  get isPublic(): boolean {
+    return this.party && this.party.public;
+  }
+
+  get isInvited(): boolean {
+    if (this.party && this.user) {
+      const invited = this.party.invited || [];
+
+      return invited.indexOf(this.user._id) !== -1;
+    }
+
+    return false;
+  }
+
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
     this.partySub.unsubscribe();
