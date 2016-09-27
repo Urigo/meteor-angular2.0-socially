@@ -1,42 +1,61 @@
-<form *ngIf="party" (submit)="saveParty()">
-  <label>Name</label>
-  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.name" name="name">
+<div class="row ma-party-details-container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <legend>View and Edit Your Party Details:</legend>
+    <form class="form-horizontal" *ngIf="party" (submit)="saveParty()">
+      <div class="form-group">
+        <label>Party Name</label>
+        <input [disabled]="!isOwner" type="text" [(ngModel)]="party.name" name="name" class="form-control">
+      </div>
 
-  <label>Description</label>
-  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.description" name="description">
+      <div class="form-group">
+        <label>Description</label>
+        <input [disabled]="!isOwner" type="text" [(ngModel)]="party.description" name="description" class="form-control">
+      </div>
 
-  <label>Location</label>
-  <input [disabled]="!isOwner" type="text" [(ngModel)]="party.location.name" name="location">
+      <div class="form-group">
+        <label>Location name</label>
+        <input [disabled]="!isOwner" type="text" [(ngModel)]="party.location.name" name="location" class="form-control">
+      </div>
 
-  <button [disabled]="!isOwner" type="submit">Save</button>
-  <a [routerLink]="['/']">Cancel</a>
-</form>
+      <div class="form-group">
+        <button [disabled]="!isOwner" type="submit" class="btn btn-primary">Save</button>
+        <a [routerLink]="['/']" class="btn">Back</a>
+      </div>
+    </form>
 
-<div *ngIf="isOwner || isPublic">
-  <p>Users to invite:</p>
-  <ul>
-    <li *ngFor="let user of users | async">
-      <div>{{user | displayName}}</div>
-      <button (click)="invite(user)">Invite</button>
-    </li>
-  </ul>
+    <ul class="ma-invite-list" *ngIf="isOwner || isPublic">
+      <h3>
+        Users to invite:
+      </h3>
+      <li *ngFor="let user of users | async">
+        <div>{{ user | displayName }}</div>
+        <button (click)="invite(user)" class="btn btn-primary btn-sm">Invite</button>
+      </li>
+    </ul>
+
+    <div *ngIf="isInvited">
+      <h2>Reply to the invitation</h2>
+      <input type="button" class="btn btn-primary" value="I'm going!" (click)="reply('yes')">
+      <input type="button" class="btn btn-warning" value="Maybe" (click)="reply('maybe')">
+      <input type="button" class="btn btn-danger" value="No" (click)="reply('no')">
+    </div>
+
+    <h3 class="ma-map-title">
+      Click the map to set the party location
+    </h3>
+
+    <div class="angular-google-map-container">
+      <sebm-google-map
+        [latitude]="lat || centerLat"
+        [longitude]="lng || centerLng"
+        [zoom]="8"
+        (mapClick)="mapClicked($event)">
+        <sebm-google-map-marker
+          *ngIf="lat && lng"
+          [latitude]="lat"
+          [longitude]="lng">
+        </sebm-google-map-marker>
+      </sebm-google-map>
+    </div>
+  </div>
 </div>
-
-<div *ngIf="isInvited">
-  <h2>Reply to the invitation</h2>
-  <input type="button" value="I'm going!" (click)="reply('yes')">
-  <input type="button" value="Maybe" (click)="reply('maybe')">
-  <input type="button" value="No" (click)="reply('no')">
-</div>
-
-<sebm-google-map
-  [latitude]="lat || centerLat"
-  [longitude]="lng || centerLng"
-  [zoom]="8"
-  (mapClick)="mapClicked($event)">
-  <sebm-google-map-marker
-    *ngIf="lat && lng"
-    [latitude]="lat"
-    [longitude]="lng">
-  </sebm-google-map-marker>
-</sebm-google-map>
