@@ -5,4 +5,10 @@
        (onFileDrop)="onFileDrop($event)">
     <div>Drop an image to here</div>
   </div>
+
+  <div layout="row" *ngIf="thumbs">
+    <div *ngFor="let thumb of thumbs | async">
+      <img [src]="thumb.url"/>
+    </div>
+  </div>
 </div>
