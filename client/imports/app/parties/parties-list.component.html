@@ -1,88 +1,66 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="jumbotron">
-      <h3>Create a new party!</h3>
-      <parties-form [hidden]="!user"></parties-form>
-      <div [hidden]="user">You need to login to create new parties!</div>
-    </div>
-  </div>
-</div>
-<div class="row ma-filters">
-  <div class="col-md-6">
-    <h3>All Parties:</h3>
-    <form class="form-inline">
-      <input type="text" class="form-control" #searchtext placeholder="Search by Location">
-      <button type="button" class="btn btn-primary" (click)="search(searchtext.value)">Search</button>
-      Sort by name: <select class="form-control" #sort (change)="changeSortOrder(sort.value)">
-      <option value="1" selected>Ascending</option>
-      <option value="-1">Descending</option>
-    </select>
-    </form>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <pagination-controls (pageChange)="onPageChanged($event)"></pagination-controls>
-      </li>
-      <li *ngFor="let party of parties | async"
-          class="list-group-item ma-party-item">
-        <div class="row">
-          <div class="col-sm-8">
-            <h2 class="ma-party-name">
-              <a [routerLink]="['/party', party._id]">{{party.name}}</a>
-            </h2>
-            @ {{party.location.name}}
-            <p class="ma-party-description">
-              {{party.description}}
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <button class="btn btn-danger pull-right" [hidden]="!isOwner(party)" (click)="removeParty(party)"><i
-              class="fa fa-times"></i></button>
-          </div>
-        </div>
-        <div class="row ma-party-item-bottom">
-          <div class="col-sm-4">
-            <div class="ma-rsvp-sum">
-              <div class="ma-rsvp-amount">
-                <div class="ma-amount">
-                  {{party | rsvp:'yes'}}
-                </div>
-                <div class="ma-rsvp-title">
-                  YES
-                </div>
-              </div>
-              <div class="ma-rsvp-amount">
-                <div class="ma-amount">
-                  {{party | rsvp:'maybe'}}
-                </div>
-                <div class="ma-rsvp-title">
-                  MAYBE
-                </div>
-              </div>
-              <div class="ma-rsvp-amount">
-                <div class="ma-amount">
-                  {{party | rsvp:'no'}}
-                </div>
-                <div class="ma-rsvp-title">
-                  NO
-                </div>
-              </div>
+<div flex layout="row" class="div ma-parties-list">
+  <div layout="row" flex>
+    <div flex="50">
+      <div>
+        <div class="div new-party-form-container">
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h3>Create a new party!</h3>
             </div>
+          </md-toolbar>
+          <parties-form [hidden]="!user"></parties-form>
+          <div [hidden]="user">You need to login to create new parties!</div>
+        </div>
+        <div layout-padding layout="row">
+          <md-input #searchtext placeholder="Search by Location"></md-input>
+          <button md-raised-button (click)="search(searchtext.value)">Search</button>
+        </div>
+        <div layout-padding layout="row">
+          Sort by name:
+          <select class="form-control" #sort (change)="changeSortOrder(sort.value)">
+            <option value="1" selected>Ascending</option>
+            <option value="-1">Descending</option>
+          </select>
+        </div>
+
+        <div class="div md-padding" style="padding-top:0;">
+          <pagination-controls (pageChange)="onPageChanged($event)"></pagination-controls>
+          <div *ngFor="let party of parties | async">
+            <md-card>
+              <md-card-content>
+                <h2 class="md-title ma-name">
+                  <a [routerLink]="['/party', party._id]">{{party.name}}</a>
+                </h2>
+                <p class="ma-description" style="padding:0 10px;margin-bottom:35px;margin-top: 6px;">
+                  {{party.description}}
+                </p>
+                <div layout="row">
+                  <div layout="row" layout-align="end end">
+                    <div>
+                      <div class="rsvps-sum">
+                        <div class="rsvps-amount">{{party | rsvp:'yes'}}</div>
+                        <div class="rsvps-title">Yes</div>
+                      </div>
+                      <div class="rsvps-sum">
+                        <div class="rsvps-amount">{{party | rsvp:'maybe'}}</div>
+                        <div class="rsvps-title">Maybe</div>
+                      </div>
+                      <div class="rsvps-sum">
+                        <div class="rsvps-amount">{{party | rsvp:'no'}}</div>
+                        <div class="rsvps-title">No</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </md-card-content>
+            </md-card>
           </div>
         </div>
-      </li>
-      <li class="list-group-item">
-        <pagination-controls (pageChange)="onPageChanged($event)"></pagination-controls>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-6">
-    <ul class="list-group">
-      <li class="list-group-item">
+      </div>
+      <div flex="50" layout="row" style="min-height:300px;">
         <sebm-google-map
+          style="width: 100%; min-height:300px;"
+          flex layout="row"
           [latitude]="0"
           [longitude]="0"
           [zoom]="1">
@@ -94,7 +72,7 @@
             </sebm-google-map-marker>
           </div>
         </sebm-google-map>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>
