@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 import template from './parties-upload.component.html';
 
 import { upload } from '../../../../both/methods/images.methods';
+
+import {Subject, Subscription} from "rxjs";
 
 @Component({
   selector: 'parties-upload',
@@ -11,6 +13,7 @@ import { upload } from '../../../../both/methods/images.methods';
 export class PartiesUploadComponent {
   fileIsOver: boolean = false;
   uploading: boolean = false;
+  files: Subject<string[]> = new Subject<string[]>();
 
   constructor() {}
 
