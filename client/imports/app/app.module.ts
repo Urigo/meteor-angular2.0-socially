@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { routes, ROUTES_PROVIDERS } from './app.routes';
 import { PARTIES_DECLARATIONS } from './parties';
 import { SHARED_DECLARATIONS } from './shared';
+import { MaterialModule } from "@angular/material";
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { SHARED_DECLARATIONS } from './shared';
     Ng2PaginationModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAWoBdZHCNh5R-hB5S5ZZ2oeoYyfdDgniA'
-    })
+    }),
+    MaterialModule.forRoot()
   ],
   declarations: [
     AppComponent,
