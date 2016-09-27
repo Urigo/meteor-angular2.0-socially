@@ -1,5 +1,8 @@
 <div layout="column">
-  <div>
+  <div fileDrop
+       [ngClass]="{'file-is-over': fileIsOver}"
+       (fileOver)="fileOver($event)"
+       (onFileDrop)="onFileDrop($event)">
     <div>Drop an image to here</div>
   </div>
 </div>
