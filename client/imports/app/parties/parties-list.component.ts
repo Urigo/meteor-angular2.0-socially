@@ -41,12 +41,15 @@ export class PartiesListComponent implements OnInit, OnDestroy {
   autorunSub: Subscription;
   location: Subject<string> = new Subject<string>();
   user: Meteor.User;
+  imagesSubs: Subscription;
 
   constructor(
     private paginationService: PaginationService
   ) {}
 
   ngOnInit() {
+    this.imagesSubs = MeteorObservable.subscribe('images').subscribe();
+
     this.optionsSub = Observable.combineLatest(
       this.pageSize,
       this.curPage,
@@ -117,5 +120,6 @@ export class PartiesListComponent implements OnInit, OnDestroy {
     this.partiesSub.unsubscribe();
     this.optionsSub.unsubscribe();
     this.autorunSub.unsubscribe();
+    this.imagesSubs.unsubscribe();
   }
 }
