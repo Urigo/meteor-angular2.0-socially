@@ -1,21 +1,42 @@
-<form [formGroup]="addForm" (ngSubmit)="addParty()" class="form-inline">
-  <fieldset class="form-group">
-    <label for="partyName">Party name</label>
-    <input id="partyName" class="form-control" type="text" formControlName="name" placeholder="Party name" />
-
-    <label for="description">Description</label>
-    <input id="description" class="form-control" type="text" formControlName="description" placeholder="Description">
-
-    <label for="location_name">Location</label>
-    <input id="location_name" class="form-control" type="text" formControlName="location" placeholder="Location name">
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" formControlName="public">
-        Public
-      </label>
+<div class="form-container">
+  <div class="container-background">
+    <div class="form-content">
+      <div class="form-center">
+        <h1>Your party is missing?</h1>
+        <h2>Add it now! ></h2>
+      </div>
+      <div class="form-center">
+        <form [hidden]="!user" [formGroup]="addForm" (ngSubmit)="addParty()">
+          <div style="display: table-row">
+            <div class="form-inputs">
+              <md-input dividerColor="accent" formControlName="name" placeholder="Party name"></md-input>
+              <br/>
+              <md-input dividerColor="accent" formControlName="description" placeholder="Description"></md-input>
+              <br/>
+              <md-input dividerColor="accent" formControlName="location" placeholder="Location name"></md-input>
+              <br/>
+              <md-checkbox formControlName="public">Public party?</md-checkbox>
+              <br/><br/>
+              <button color="accent" md-raised-button type="submit">Add my party!</button>
+            </div>
+            <div class="form-extras">
+              <sebm-google-map class="new-party-map"
+                               [latitude]="newPartyPosition.lat"
+                               [longitude]="newPartyPosition.lng"
+                               [zoom]="8"
+                               (mapClick)="mapClicked($event)">
+                <sebm-google-map-marker
+                  [latitude]="newPartyPosition.lat"
+                  [longitude]="newPartyPosition.lng">
+                </sebm-google-map-marker>
+              </sebm-google-map>
+            </div>
+          </div>
+        </form>
+        <div [hidden]="user">
+          Please login in order to create new parties!
+        </div>
+      </div>
     </div>
-
-    <button type="submit" class="btn btn-primary">Add</button>
-  </fieldset>
-</form>
+  </div>
+</div>
