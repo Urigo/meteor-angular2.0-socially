@@ -20,6 +20,12 @@
       <p>{{party.description}}</p>
       <p>{{party.location}}</p>
       <button (click)="removeParty(party)">X</button>
+      <div>
+        Who is coming:
+        Yes - {{party | rsvp:'yes'}}
+        Maybe - {{party | rsvp:'maybe'}}
+        No - {{party | rsvp:'no'}}
+      </div>
     </li>
   </ul>
 
