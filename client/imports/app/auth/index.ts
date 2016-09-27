@@ -1,4 +1,4 @@
-import {LoginComponent} from "./login.component";
+import {LoginComponent} from "./login.component.web";
 import {SignupComponent} from "./signup.component";
 import {RecoverComponent} from "./recover.component";
 
