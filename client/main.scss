@@ -8,6 +8,10 @@ $color5 : #FFFFA6;
 $color6 : #2F2933;
 $color7 : #FF6F69;
 
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
 html, body {
   height: 100%;
 }
