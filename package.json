@@ -15,6 +15,7 @@
     "@angular/platform-browser": "2.1.2",
     "@angular/platform-browser-dynamic": "2.1.2",
     "@angular/router": "3.1.2",
+    "angular2-file-drop": "0.0.5",
     "@types/node": "^6.0.45",
     "angular2-google-maps": "0.15.0",
     "angular2-meteor": "0.7.0",
