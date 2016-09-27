@@ -24,6 +24,11 @@
       margin: 20px;
       position: relative;
 
+      img.party-main-image {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
       .party-name > a {
         color: black;
         text-decoration: none;
