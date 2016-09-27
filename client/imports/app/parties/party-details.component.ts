@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Meteor } from 'meteor/meteor';
 import { MeteorObservable } from 'meteor-rxjs';
 import { InjectUser } from "angular2-meteor-accounts-ui";
+import { MouseEvent } from "angular2-google-maps/core";
 
 import 'rxjs/add/operator/map';
 
@@ -28,6 +29,9 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
   users: Observable<User>;
   uninvitedSub: Subscription;
   user: Meteor.User;
+  // Default center Palo Alto coordinates.
+  centerLat: number = 37.4292;
+  centerLng: number = -122.1381;
 
   constructor(
     private route: ActivatedRoute
@@ -118,6 +122,20 @@ export class PartyDetailsComponent implements OnInit, OnDestroy {
     }
 
     return false;
+  }
+
+
+  get lat(): number {
+    return this.party && this.party.location.lat;
+  }
+
+  get lng(): number {
+    return this.party && this.party.location.lng;
+  }
+
+  mapClicked($event: MouseEvent) {
+    this.party.location.lat = $event.coords.lat;
+    this.party.location.lng = $event.coords.lng;
   }
 
   ngOnDestroy() {
