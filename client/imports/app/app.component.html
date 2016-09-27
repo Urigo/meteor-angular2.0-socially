@@ -1,6 +1,13 @@
 <md-toolbar color="primary">
   <a routerLink="/" class="md-title">Socially</a>
   <span class="fill-remaining-space"></span>
-  <login-buttons></login-buttons>
+  <div [hidden]="user">
+    <a md-button [routerLink]="['/login']" >Login</a>
+    <a md-button [routerLink]="['/signup']">Sign up</a>
+  </div>
+  <div [hidden]="!user">
+    <span>{{ user | displayName }}</span>
+    <button md-button (click)="logout()">Logout</button>
+  </div>
 </md-toolbar>
 <router-outlet></router-outlet>
