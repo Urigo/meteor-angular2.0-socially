@@ -19,6 +19,7 @@
     "angular2-meteor-accounts-ui": "1.0.0",
     "angular2-meteor-polyfills": "^0.1.1",
     "angular2-meteor-tests-polyfills": "0.0.2",
+    "bootstrap": "^4.0.0-alpha.4",
     "meteor-node-stubs": "0.2.3",
     "meteor-rxjs": "0.4.3",
     "ng2-pagination": "0.5.1",
