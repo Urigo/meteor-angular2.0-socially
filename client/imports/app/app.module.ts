@@ -17,6 +17,7 @@ import { MdCardModule } from "@angular2-material/card";
 import { MdCoreModule } from "@angular2-material/core";
 import { MdCheckboxModule } from "@angular2-material/checkbox";
 import {MdListModule} from "@angular2-material/list";
+import {AUTH_DECLARATIONS} from "./auth/index";
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import {MdListModule} from "@angular2-material/list";
   declarations: [
     AppComponent,
     ...PARTIES_DECLARATIONS,
-    ...SHARED_DECLARATIONS
+    ...SHARED_DECLARATIONS,
+    ...AUTH_DECLARATIONS
   ],
   providers: [
     ...ROUTES_PROVIDERS
