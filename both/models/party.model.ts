@@ -7,4 +7,10 @@ export interface Party extends CollectionObject {
   owner?: string;
   public: boolean;
   invited?: string[];
+  rsvps?: RSVP[];
+}
+
+interface RSVP {
+  userId: string;
+  response: string;
 }
