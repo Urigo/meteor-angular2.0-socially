@@ -3,8 +3,10 @@ import {Component, OnInit} from '@angular/core';
 import template from './parties-upload.component.html';
 
 import { upload } from '../../../../both/methods/images.methods';
-import {Subject, Subscription} from "rxjs";
+import {Subject, Subscription, Observable} from "rxjs";
 import {MeteorObservable} from "meteor-rxjs";
+import {Thumb} from "../../../../both/models/image.model";
+import {Thumbs} from "../../../../both/collections/images.collection";
 
 @Component({
   selector: 'parties-upload',
@@ -15,6 +17,7 @@ export class PartiesUploadComponent implements OnInit {
   uploading: boolean = false;
   files: Subject<string[]> = new Subject<string[]>();
   thumbsSubscription: Subscription;
+  thumbs: Observable<Thumb[]>;
 
   constructor() {}
 
@@ -26,7 +29,14 @@ export class PartiesUploadComponent implements OnInit {
           this.thumbsSubscription = undefined;
         }
 
-        this.thumbsSubscription = MeteorObservable.subscribe("thumbs", filesArray).subscribe();
+        this.thumbsSubscription = MeteorObservable.subscribe("thumbs", filesArray).subscribe(() => {
+          this.thumbs = Thumbs.find({
+            originalStore: 'images',
+            originalId: {
+              $in: filesArray
+            }
+          }).zone();
+        });
       });
     });
   }
