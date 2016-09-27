@@ -17,7 +17,7 @@
               <br/>
               <md-checkbox formControlName="public">Public party?</md-checkbox>
               <br/><br/>
-              <parties-upload #upload></parties-upload>
+              <parties-upload #upload (onFile)="onImage($event)"></parties-upload>
               <button color="accent" md-raised-button type="submit">Add my party!</button>
             </div>
             <div class="form-extras">
