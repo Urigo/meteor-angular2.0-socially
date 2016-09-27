@@ -21,6 +21,7 @@
     "@angular2-material/input": "2.0.0-alpha.8-2",
     "@angular2-material/list": "2.0.0-alpha.8-2",
     "@angular2-material/toolbar": "2.0.0-alpha.8-2",
+    "angular2-file-drop": "0.0.5",
     "@types/node": "^6.0.45",
     "angular2-google-maps": "0.15.0",
     "angular2-meteor": "0.7.0",
