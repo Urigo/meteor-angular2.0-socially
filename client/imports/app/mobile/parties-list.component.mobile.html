@@ -4,5 +4,28 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  Parties!
+  <ion-card *ngFor="let party of parties | async">
+    <ion-card-content>
+      <ion-card-title>
+        {{party.name}}
+      </ion-card-title>
+      <p>
+        {{party.description}}
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col text-right>
+        <ion-badge>
+          yes {{party | rsvp:'yes'}}
+        </ion-badge>
+        <ion-badge item-center dark>
+          maybe {{party | rsvp:'maybe'}}
+        </ion-badge>
+        <ion-badge item-center danger>
+          no {{party | rsvp:'no'}}
+        </ion-badge>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
