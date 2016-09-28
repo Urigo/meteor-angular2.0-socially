@@ -19,6 +19,15 @@ body {
   margin: 0;
 }
 
+body.mobile {
+  overflow: hidden;
+}
+
+body.web {
+  overflow: visible;
+  position: initial;
+}
+
 .sebm-google-map-container {
   width: 450px;
   height: 450px;
