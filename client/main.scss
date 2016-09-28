@@ -1,4 +1,5 @@
 @import '../node_modules/@angular/material/core/theming/all-theme';
+@import "imports/app/mobile/ionic.scss";
 
 @include md-core();
 $app-primary: md-palette($md-light-blue, 500, 100, 700);
