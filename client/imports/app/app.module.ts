@@ -19,38 +19,66 @@ import { MdCheckboxModule } from "@angular2-material/checkbox";
 import {MdListModule} from "@angular2-material/list";
 import {AUTH_DECLARATIONS} from "./auth/index";
 import {FileDropModule} from "angular2-file-drop";
+import {MOBILE_DECLARATIONS} from "./mobile/index";
+import {AppMobileComponent} from "./mobile/app.component.mobile";
+import {IonicModule, IonicApp} from "ionic-angular";
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes),
-    AccountsModule,
-    Ng2PaginationModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAWoBdZHCNh5R-hB5S5ZZ2oeoYyfdDgniA'
-    }),
-    MdCoreModule.forRoot(),
-    MdButtonModule.forRoot(),
-    MdToolbarModule.forRoot(),
-    MdInputModule.forRoot(),
-    MdCardModule.forRoot(),
-    MdCheckboxModule.forRoot(),
-    MdListModule.forRoot(),
-    FileDropModule
-  ],
-  declarations: [
-    AppComponent,
-    ...PARTIES_DECLARATIONS,
-    ...SHARED_DECLARATIONS,
-    ...AUTH_DECLARATIONS
-  ],
-  providers: [
-    ...ROUTES_PROVIDERS
-  ],
-  bootstrap: [
-    AppComponent
-  ]
-})
+let moduleDefinition;
+
+if (Meteor.isCordova) {
+  moduleDefinition = {
+    imports: [
+      IonicModule.forRoot(AppMobileComponent)
+    ],
+    declarations: [
+      ...SHARED_DECLARATIONS,
+      ...MOBILE_DECLARATIONS
+    ],
+    providers: [
+    ],
+    bootstrap: [
+      IonicApp
+    ],
+    entryComponents: [
+      AppMobileComponent
+    ]
+  }
+}
+else {
+  moduleDefinition = {
+    imports: [
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule,
+      RouterModule.forRoot(routes),
+      AccountsModule,
+      Ng2PaginationModule,
+      AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyAWoBdZHCNh5R-hB5S5ZZ2oeoYyfdDgniA'
+      }),
+      MdCoreModule.forRoot(),
+      MdButtonModule.forRoot(),
+      MdToolbarModule.forRoot(),
+      MdInputModule.forRoot(),
+      MdCardModule.forRoot(),
+      MdCheckboxModule.forRoot(),
+      MdListModule.forRoot(),
+      FileDropModule
+    ],
+    declarations: [
+      AppComponent,
+      ...PARTIES_DECLARATIONS,
+      ...SHARED_DECLARATIONS,
+      ...AUTH_DECLARATIONS
+    ],
+    providers: [
+      ...ROUTES_PROVIDERS
+    ],
+    bootstrap: [
+      AppComponent
+    ]
+  }
+}
+
+@NgModule(moduleDefinition)
 export class AppModule {}
