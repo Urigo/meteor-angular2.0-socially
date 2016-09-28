@@ -1,6 +1,7 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import { Images } from '../../../../both/collections/images.collection';
 import { Party } from '../../../../both/models/party.model';
+import { Meteor } from "meteor/meteor";
 
 @Pipe({
   name: 'displayMainImage'
@@ -17,7 +18,12 @@ export class DisplayMainImagePipe implements PipeTransform {
     const found = Images.findOne(imageId);
 
     if (found) {
-      imageUrl = found.url;
+      if (!Meteor.isCordova) {
+        imageUrl = found.url;
+      } else {
+        const path = `ufs/${found.store}/${found._id}/${found.name}`;
+        imageUrl = Meteor.absoluteUrl(path);
+      }
     }
 
     return imageUrl;
