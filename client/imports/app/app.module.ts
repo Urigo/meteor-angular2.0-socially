@@ -22,12 +22,14 @@ import {FileDropModule} from "angular2-file-drop";
 import {MOBILE_DECLARATIONS} from "./mobile/index";
 import {AppMobileComponent} from "./mobile/app.component.mobile";
 import {IonicModule, IonicApp} from "ionic-angular";
+import {PartiesListMobileComponent} from "./mobile/parties-list.component.mobile";
 
 let moduleDefinition;
 
 if (Meteor.isCordova) {
   moduleDefinition = {
     imports: [
+      Ng2PaginationModule,
       IonicModule.forRoot(AppMobileComponent)
     ],
     declarations: [
@@ -40,7 +42,7 @@ if (Meteor.isCordova) {
       IonicApp
     ],
     entryComponents: [
-      AppMobileComponent
+      PartiesListMobileComponent
     ]
   }
 }
