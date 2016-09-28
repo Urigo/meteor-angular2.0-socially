@@ -5,6 +5,7 @@
 </ion-header>
 <ion-content>
   <ion-card *ngFor="let party of parties | async">
+    <img *ngIf="party.images" [src]="party | displayMainImage">
     <ion-card-content>
       <ion-card-title>
         {{party.name}}
