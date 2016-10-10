@@ -1,0 +1,25 @@
+{
+ "ignore": [
+    "**/node_modules/**"
+  ],
+  "critics": {
+    "lint": {"engine": "tslint"}
+  },
+    "dependencies": {
+      "mute": [
+        "rxjs"
+      ],
+      "unused-ignores": [
+        "zone.js",
+        "try-thread-sleep",
+        "spawn-sync",
+        "reflect-metadata",
+        "meteor-typings",
+        "meteor-node-stubs",
+        "ionicons",
+        "angular2-meteor-tests-polyfills",
+        "angular2-meteor",
+        "@types/*"
+      ]
+    }
+}
