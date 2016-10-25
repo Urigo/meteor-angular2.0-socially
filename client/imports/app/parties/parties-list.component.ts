@@ -13,6 +13,7 @@ import { Parties } from '../../../../both/collections/parties.collection';
 import { Party } from '../../../../both/models/party.model';
 
 import template from './parties-list.component.html';
+import style from './parties-list.component.scss';
 
 interface Pagination {
   limit: number;
@@ -25,7 +26,8 @@ interface Options extends Pagination {
 
 @Component({
   selector: 'parties-list',
-  template
+  template,
+  styles: [ style ]
 })
 @InjectUser('user')
 export class PartiesListComponent implements OnInit, OnDestroy {
