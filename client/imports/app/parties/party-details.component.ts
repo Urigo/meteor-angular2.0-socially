@@ -15,10 +15,12 @@ import { Users } from '../../../../both/collections/users.collection';
 import { User } from '../../../../both/models/user.model';
 
 import template from './party-details.component.html';
+import style from './party-details.component.scss';
 
 @Component({
   selector: 'party-details',
-  template
+  template,
+  styles: [ style ]
 })
 @InjectUser('user')
 export class PartyDetailsComponent implements OnInit, OnDestroy {
