@@ -15,6 +15,7 @@
     "@angular/platform-browser-dynamic": "2.1.2",
     "@angular/router": "3.1.2",
     "@angular/material": "2.0.0-alpha.9-3",
+    "@types/node": "^6.0.45",
     "angular2-google-maps": "0.15.0",
     "angular2-meteor": "0.7.0",
     "angular2-meteor-accounts-ui": "1.0.0",
