@@ -1,32 +1,25 @@
-.ma-party-details-container {
-  padding: 20px;
+.party-details-container {
+  display: table;
 
-  .angular-google-map-container {
+  .row {
+    display: table-row;
     width: 100%;
-    height: 100%;
-  }
 
-  .angular-google-map {
-    width: 100%;
-    height: 400px;
-  }
+    .party-details, .party-invites, .party-map {
+      display: table-cell;
+      width: 33.3%;
+      vertical-align: top;
 
-  .ma-map-title {
-    font-size: 16px;
-    font-weight: bolder;
-  }
-
-  .ma-invite-list {
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    h3 {
-      font-size: 16px;
-      font-weight: bolder;
+      md-card {
+        margin: 20px;
+      }
     }
 
-    ul {
-      padding: 0;
+    .party-map {
+      sebm-google-map {
+        height: 300px;
+        width: 100%;
+      }
     }
   }
 }
