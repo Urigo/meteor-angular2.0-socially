@@ -34,7 +34,6 @@ ecmascript-runtime@0.3.15
 ejson@1.0.13
 email@1.1.18
 es5-shim@4.6.15
-fastclick@1.0.13
 geojson-utils@1.0.10
 hot-code-push@1.0.4
 html-tools@1.0.11
@@ -55,7 +54,6 @@ meteor-base@1.0.4
 minifier-css@1.2.15
 minifier-js@1.2.15
 minimongo@1.0.18
-mobile-experience@1.0.4
 mobile-status-bar@1.0.13
 modules@0.7.7
 modules-runtime@0.7.7
