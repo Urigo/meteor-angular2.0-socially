@@ -1056,13 +1056,13 @@ We will need a form and the login method, so let's implement them:
 +┊  ┊27┊  login() {
 +┊  ┊28┊    if (this.loginForm.valid) {
 +┊  ┊29┊      Meteor.loginWithPassword(this.loginForm.value.email, this.loginForm.value.password, (err) => {
-+┊  ┊30┊        if (err) {
-+┊  ┊31┊          this.zone.run(() => {
++┊  ┊30┊        this.zone.run(() => {
++┊  ┊31┊          if (err) {
 +┊  ┊32┊            this.error = err;
-+┊  ┊33┊          });
-+┊  ┊34┊        } else {
-+┊  ┊35┊          this.router.navigate(['/']);
-+┊  ┊36┊        }
++┊  ┊33┊          } else {
++┊  ┊34┊            this.router.navigate(['/']);
++┊  ┊35┊          }
++┊  ┊36┊        });
 +┊  ┊37┊      });
 +┊  ┊38┊    }
 +┊  ┊39┊  }
