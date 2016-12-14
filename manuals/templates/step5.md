@@ -176,7 +176,7 @@ Open a different browser, fill out the form, submit and see how the party is add
 
 In order to get a better coded application, we will use the power of TypeScript and declare our types, models and interfaces of the database objects.
 
-First, we will get warning and errors from the TypeScript compiler, and we also get great IDE support if you uses WebStorm or VSCode.
+First, we will get warning and errors from the TypeScript compiler, and we also get great IDE support if you use WebStorm or VSCode.
 
 So first, let's create a base model for our database entities, which contains the `_id` field:
 
