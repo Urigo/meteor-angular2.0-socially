@@ -13,7 +13,7 @@ Let's change our template to be dynamic:
 We replaced the hard-coded party list with the [NgFor](https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html) directive and two Angular expressions:
 
 - The `*ngFor="let party of parties"` attribute in the `li` tag is an Angular repeater directive. The repeater tells Angular to create a `li` element for each party in the list using the `li` tag as the template.
-- The expressions wrapped in the double curly braces ( `\{{party.name}}` and `\{{party.description}}` ) will be replaced by the value of the expressions.
+- The expressions wrapped in the double curly braces ( `{{party.name}}` and `{{party.description}}` ) will be replaced by the value of the expressions.
 
 Angular 2 has _common_ directives that provide additional functionality to HTML. These include `ngFor`, `ngIf`, `ngClass`, _form_ directives (which will be heavily used on the 4th step) and more found in the [`@angular/common`](https://angular.io/docs/ts/latest/api/common/) package. Those common directives are globally available in every component template so you don't need to import them manually into the component's view, in comparison to a custom directive or routing directives.
 
