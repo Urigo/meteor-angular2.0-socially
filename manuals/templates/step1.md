@@ -227,4 +227,4 @@ You can read more about how modules work and how they are based on CommonJS [on 
 
 # Summary
 
-Let's continue to [step 1](/tutorials/angular2/static-template) and add some content to our application.
+Let's continue to [step 2](/tutorials/angular2/static-template) and add some content to our application.
