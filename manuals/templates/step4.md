@@ -30,27 +30,27 @@ In short, Meteor core's setup has:
 
 # RxJS and MongoObservable
 
-Angular2-Meteor team also provides an additional package called `meteor-rxjs` which wraps Meteor's original API, and returns RxJs `Observable` instead of using callbacks or promises.
+The Angular2-Meteor team also provides an additional package called `meteor-rxjs` which wraps Meteor's original API, and returns a RxJs `Observable` instead of using callbacks or promises.
 
-`Observable` is very similar to `Promise`, only it has a continuation flow - which means a multiple `resolve`s.
+`Observable` is very similar to `Promise`, only it has a continuation flow - which means multiple `resolve`s.
 
 The lifecycle of `Observable` is built on three parts:
 
 - `next` - called each time the Observable changes.
 - `error` - called on error.
-- `complete` - calls when the data flow is done.
+- `complete` - called when the data flow is done.
 
-If we try to connect it to our Meteor world and the world of Mongo Collection, so each time a Collection changes - the `next` callback called, and `complete` should not be called because we are using reactive data and we will always waiting for more updates.
+When we connect it to our Meteor world and the world of Mongo Collection, each time a Collection changes the `next` callback is called.  The `complete` callback is never called because we are using reactive data and we will always be waiting for more updates.
 
-We will use this package instead of Meteor's API, because Angular 2 supports RxJS `Observable`s, and provides great features for those who uses it for their application - starting from iterating on object and a faster change detection.
+We will use this package instead of Meteor's API, because Angular 2 supports RxJS `Observable`s, and provides great features - starting from iterating on object and faster change detection.
 
 You can read more about `Observable`s and RxJS [here](http://reactivex.io/documentation/observable.html).
 
-> Note that RxJS documentation might be a little intimidating at the beginning - if you having difficult with it - try to read the examples we use in this tutorials and it's might help you.
+> Note that RxJS documentation might be a little intimidating at the beginning - if you have difficulty with it try to read the examples we use in this tutorial and it may help you.
 
 # Declare a Collection
 
-So first, let's define our first parties collection that will store all our parties.
+So first, let's define our parties collection that will store all our parties.
 
 We will use `MongoObservable` static methods to declare the Collection:
 
@@ -66,16 +66,16 @@ The TypeScript compiler converts `.ts` files to ES5, then registers a CommonJS m
 
 That's why we use the special word `export`. We are telling CommonJS that we are allowing the object to be exported from this module into the outside world.
 
-Meteor has a series of special folder names, including the `client` folder. All files within a folder named `client` are loaded on the client only. Likewise, files in a folder called `server` are loaded on the server only.
+Meteor has a series of special folders, including the `client` folder. All files within a folder named `client` are loaded on the client only. Likewise, files in the `server` folder are loaded on the server only.
 
-Placing the `both` folder outside of any special folder, makes its contents available to both the client and the server. Therefore, the `parties` collection (and the actions on it) will run on both the client (minimongo) and the server (Mongo).
+Placing the `both` folder outside of any special folder makes its contents available to both the client and the server. Therefore, the `parties` collection (and the actions on it) will run on both the client (minimongo) and the server (Mongo).
 
 Though we only declared our model once, we have two modules that declare two versions of our parties collection:
 one for client-side and one for server-side. This is often referred to as "isomorphic" or "universal javascript". All synchronization between these two versions of collections is handled by Meteor.
 
 # Binding Meteor to Angular
 
-Now that we've created the collection, our client needs to subscribe to it's changes and bind it to our `this.parties` array.
+Now that we've created the collection, our client needs to bind it to our `this.parties` array and subscribe to its changes.
 
 Because we use `MongoObservable.Collection` instead of regular Meteor Collection, Angular 2 can easily support this type of data object, and iterate it without any modifications.
 
@@ -89,7 +89,7 @@ And let's bind to the `Observable`:
 
 {{{diff_step 4.3}}}
 
-> We used `zone()` method which is a wrapper for the regular `Observable` that do some *Magic* and connects the collection changes into our view using our Component's `Zone`.
+> We used the `zone()` method which is a wrapper for the regular `Observable` that does some *magic* and connects the collection changes to our view using our Component's `Zone`.
 
 Because of that, we now need to add `AsyncPipe`:
 
@@ -120,7 +120,7 @@ Now let's do the same but with "remove". At the prompt, type the following comma
 
     db.parties.find({});
 
-Choose one party you want to remove and copy its 'id' property.
+Choose one party you want to remove and copy its '_id' property.
 Then, remove it using that id (replace 'N4KzMEvtm4dYvk2TF' with your party's id value):
 
     db.parties.remove({"_id": ObjectId("N4KzMEvtm4dYvk2TF")});
