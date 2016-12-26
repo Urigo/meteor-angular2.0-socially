@@ -17,6 +17,8 @@ First, let's bind the party details into our view:
 
 {{{diff_step 7.1}}}
 
+Notice that if you click on a party link in the list you get a correct detail page, but if you open the same destination URL in a new browser tab, you will not get the content.  This will be addressed in step 10 "Privacy & Subscriptions", section "Subscribe with Params".
+
 Now, let's change `party-details.component.html` into a form, so that we can edit the party details:
 
 {{{diff_step 7.2}}}
