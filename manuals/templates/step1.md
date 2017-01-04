@@ -20,7 +20,7 @@ Open your command line and paste this command:
 
 Now let's create our app — write this in the command line:
 
-    $ meteor create --example angular2-boilerplate socially
+    $ git clone https://github.com/bsliran/angular2-meteor-base socially
     
 > Alternatively, use your web browser to access the link:
 >
