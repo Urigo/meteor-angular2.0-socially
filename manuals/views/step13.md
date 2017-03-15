@@ -368,7 +368,7 @@ Let's define the configuration:
  ┊58┊63┊    });
  ┊59┊64┊
 +┊  ┊65┊    this.paginationService.register({
-+┊  ┊66┊      id: this.paginationService.defaultId,
++┊  ┊66┊      id: this.paginationService.defaultId(),
 +┊  ┊67┊      itemsPerPage: 10,
 +┊  ┊68┊      currentPage: 1,
 +┊  ┊69┊      totalItems: 30,
@@ -393,7 +393,7 @@ We need to notify the pagination that the current page has been changed, so let'
  ┊49┊49┊        sort: { name: nameOrder as number }
  ┊50┊50┊      };
  ┊51┊51┊
-+┊  ┊52┊      this.paginationService.setCurrentPage(this.paginationService.defaultId, curPage as number);
++┊  ┊52┊      this.paginationService.setCurrentPage(this.paginationService.defaultId(), curPage as number);
 +┊  ┊53┊
  ┊52┊54┊      if (this.partiesSub) {
  ┊53┊55┊        this.partiesSub.unsubscribe();
@@ -620,7 +620,7 @@ introduce a new `partiesSize` property in the `PartiesList` component:
 ```
 ```diff
 @@ -68,12 +71,17 @@
- ┊68┊71┊      id: this.paginationService.defaultId,
+ ┊68┊71┊      id: this.paginationService.defaultId(),
  ┊69┊72┊      itemsPerPage: 10,
  ┊70┊73┊      currentPage: 1,
 -┊71┊  ┊      totalItems: 30,
@@ -633,7 +633,7 @@ introduce a new `partiesSize` property in the `PartiesList` component:
 +┊  ┊80┊
 +┊  ┊81┊    this.autorunSub = MeteorObservable.autorun().subscribe(() => {
 +┊  ┊82┊      this.partiesSize = Counts.get('numberOfParties');
-+┊  ┊83┊      this.paginationService.setTotalItems(this.paginationService.defaultId, this.partiesSize);
++┊  ┊83┊      this.paginationService.setTotalItems(this.paginationService.defaultId(), this.partiesSize);
 +┊  ┊84┊    });
  ┊77┊85┊  }
  ┊78┊86┊
