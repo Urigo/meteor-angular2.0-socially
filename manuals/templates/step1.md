@@ -180,7 +180,7 @@ NgModule defines the Angular2 module: the external modules it declares or requir
 
 You can read more about NgModule in [Angular 2 documentation](https://angular.io/docs/ts/latest/guide/ngmodule.html).
 
-Let's create our NgModel:
+Let's create our NgModule:
 
 {{{diff_step 1.7}}}
 
@@ -192,7 +192,7 @@ And let's declare our `AppComponent` and add it as a root component that needs t
 
 Now we need to create an entry point for the project - we will create it directly under `client` directory, because we want this file to be loaded when Meteor starts our project.
 
-The main entry file uses Angular 2 `bootstrapModule` with our new NgModel:
+The main entry file uses Angular 2 `bootstrapModule` with our new NgModule:
 
 {{{diff_step 1.9}}}
 
